@@ -27,9 +27,9 @@
     --shadow-soft: 0 16px 38px -28px rgba(15, 23, 42, 0.18);
     --shadow-panel: 0 28px 80px -56px rgba(15, 23, 42, 0.28);
     --shadow-float: 0 24px 48px -24px rgba(200, 110, 54, 0.28);
-    --motion-duration-sm: 320ms;
-    --motion-duration-md: 520ms;
-    --motion-duration-lg: 760ms;
+    --motion-duration-sm: 420ms;
+    --motion-duration-md: 620ms;
+    --motion-duration-lg: 700ms;
     --motion-ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
     --motion-ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
 
@@ -360,17 +360,17 @@
     }
 
     .hero-slide-image {
-        animation: hero-drift 16s var(--motion-ease-soft) infinite alternate;
-        transform: scale(1.08);
+        animation: hero-drift 15s var(--motion-ease-soft) infinite alternate;
+        transform: scale(1.1);
     }
 
     .hero-slide-mid {
         background:
-            radial-gradient(circle at 22% 30%, rgba(249, 115, 22, 0.18) 0%, transparent 34%),
-            radial-gradient(circle at 78% 32%, rgba(96, 165, 250, 0.16) 0%, transparent 30%),
-            linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 35%);
+            radial-gradient(circle at 22% 30%, rgba(249, 115, 22, 0.24) 0%, transparent 36%),
+            radial-gradient(circle at 78% 32%, rgba(96, 165, 250, 0.22) 0%, transparent 32%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 38%);
         mix-blend-mode: screen;
-        opacity: 0.9;
+        opacity: 0.98;
     }
 
     .hero-slide-front {
@@ -379,17 +379,17 @@
 
     .hero-slide-overlay {
         background:
-            linear-gradient(180deg, rgba(2, 6, 17, 0.08), rgba(2, 6, 17, 0.28) 45%, rgba(2, 6, 17, 0.68) 100%),
-            radial-gradient(circle at center, transparent 20%, rgba(0, 0, 0, 0.14) 100%);
+            linear-gradient(180deg, rgba(2, 6, 17, 0.04), rgba(2, 6, 17, 0.22) 42%, rgba(2, 6, 17, 0.74) 100%),
+            radial-gradient(circle at center, transparent 16%, rgba(0, 0, 0, 0.2) 100%);
     }
 
     .hero-float {
         position: absolute;
         border-radius: 999px;
         filter: blur(0);
-        opacity: 0.22;
+        opacity: 0.28;
         background: radial-gradient(circle, rgba(255, 255, 255, 0.55), transparent 70%);
-        animation: hero-float 14s ease-in-out infinite;
+        animation: hero-float 12s ease-in-out infinite;
     }
 
     .hero-float-1 {
@@ -426,18 +426,18 @@
 
     .hero-orbit {
         background:
-            radial-gradient(circle at 18% 18%, rgba(249, 115, 22, 0.1) 0%, transparent 18%),
-            radial-gradient(circle at 82% 24%, rgba(96, 165, 250, 0.08) 0%, transparent 20%);
-        opacity: 0.9;
+            radial-gradient(circle at 18% 18%, rgba(249, 115, 22, 0.16) 0%, transparent 20%),
+            radial-gradient(circle at 82% 24%, rgba(96, 165, 250, 0.14) 0%, transparent 22%);
+        opacity: 1;
     }
 
     .hero-grid {
         background-image:
-            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
         background-size: 120px 120px;
         mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 26%, rgba(0, 0, 0, 0.45) 100%);
-        opacity: 0.26;
+        opacity: 0.34;
     }
 
     .hero-copy {
@@ -446,7 +446,7 @@
 
     .js-ready [data-motion-group] [data-motion-item] {
         opacity: 0;
-        transform: translate3d(0, 24px, 0) scale(0.985);
+        transform: translate3d(0, 32px, 0) scale(0.97);
         transition:
             opacity var(--motion-duration-md) var(--motion-ease-standard),
             transform var(--motion-duration-md) var(--motion-ease-standard);
@@ -463,7 +463,7 @@
     /* Scroll reveal: transform + opacity only (no filter/backdrop) */
     .js-ready .hidden-anim {
         opacity: 0;
-        transform: translateY(40px) scale(0.95);
+        transform: translateY(36px) scale(0.96);
         will-change: transform, opacity;
         transition:
             opacity var(--motion-duration-md) var(--motion-ease-standard),
@@ -510,10 +510,10 @@
 
 @keyframes hero-drift {
     0% {
-        transform: scale(1.08) translate3d(0, 0, 0);
+        transform: scale(1.1) translate3d(0, 0, 0);
     }
     100% {
-        transform: scale(1.14) translate3d(0, -1.5%, 0);
+        transform: scale(1.18) translate3d(0, -2.5%, 0);
     }
 }
 
@@ -523,7 +523,7 @@
         transform: translate3d(0, 0, 0) scale(1);
     }
     50% {
-        transform: translate3d(0, -16px, 0) scale(1.04);
+        transform: translate3d(0, -22px, 0) scale(1.06);
     }
 }
 

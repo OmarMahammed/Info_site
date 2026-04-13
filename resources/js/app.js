@@ -132,27 +132,27 @@ Alpine.data('heroSlider', (slidesCount = 2) => ({
         const isActive = this.active === index;
         const pointerX = supportsFinePointer() ? this.pointerCurrentX : 0;
         const pointerY = supportsFinePointer() ? this.pointerCurrentY : 0;
-        const mobileFactor = window.innerWidth < 768 ? 0.55 : 1;
+        const mobileFactor = window.innerWidth < 768 ? 0.62 : 1;
         const scrollDrift = this.scrollProgress * mobileFactor;
 
         const layers = {
             back: {
-                x: pointerX * 34 * mobileFactor,
-                y: (pointerY * 18) + (scrollDrift * -40),
-                scale: isActive ? 1.08 + (scrollDrift * 0.03) : 1.12,
+                x: pointerX * 48 * mobileFactor,
+                y: (pointerY * 22) + (scrollDrift * -54),
+                scale: isActive ? 1.11 + (scrollDrift * 0.04) : 1.16,
                 opacity: 1,
             },
             mid: {
-                x: pointerX * 54 * mobileFactor,
-                y: (pointerY * 24) + (scrollDrift * -22),
-                scale: isActive ? 1.02 : 1.05,
-                opacity: isActive ? 0.95 : 0.45,
+                x: pointerX * 74 * mobileFactor,
+                y: (pointerY * 32) + (scrollDrift * -32),
+                scale: isActive ? 1.04 : 1.08,
+                opacity: isActive ? 1 : 0.42,
             },
             front: {
-                x: pointerX * -42 * mobileFactor,
-                y: (pointerY * -20) + (scrollDrift * -12),
-                scale: isActive ? 1 : 0.98,
-                opacity: isActive ? 1 : 0.35,
+                x: pointerX * -60 * mobileFactor,
+                y: (pointerY * -28) + (scrollDrift * -18),
+                scale: isActive ? 1.02 : 0.97,
+                opacity: isActive ? 1 : 0.32,
             },
         };
 
@@ -168,9 +168,9 @@ Alpine.data('heroSlider', (slidesCount = 2) => ({
     getContentStyle() {
         const pointerX = supportsFinePointer() ? this.pointerCurrentX : 0;
         const pointerY = supportsFinePointer() ? this.pointerCurrentY : 0;
-        const mobileFactor = window.innerWidth < 768 ? 0.45 : 1;
+        const mobileFactor = window.innerWidth < 768 ? 0.5 : 1;
 
-        return `transform: translate3d(${pointerX * 20 * mobileFactor}px, ${(-this.scrollProgress * 28) + (pointerY * 14 * mobileFactor)}px, 0);`;
+        return `transform: translate3d(${pointerX * 28 * mobileFactor}px, ${(-this.scrollProgress * 36) + (pointerY * 18 * mobileFactor)}px, 0);`;
     },
 
     next() {
@@ -604,7 +604,7 @@ function initStaggerAnimations() {
                             showTimer = window.setTimeout(() => {
                                 card.classList.add('show');
                                 showTimer = null;
-                            }, index * 110);
+                            }, index * 130);
                         } else {
                             if (showTimer !== null) {
                                 window.clearTimeout(showTimer);
@@ -631,7 +631,7 @@ function initMotionGroups() {
 
         items.forEach((item, index) => {
             const order = Number(item.dataset.motionOrder ?? index);
-            item.style.setProperty('--motion-item-delay', `${order * 90}ms`);
+            item.style.setProperty('--motion-item-delay', `${order * 130}ms`);
         });
 
         if (prefersReducedMotion()) {
