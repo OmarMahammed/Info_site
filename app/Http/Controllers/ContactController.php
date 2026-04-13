@@ -17,7 +17,7 @@ class ContactController extends Controller
 
         ContactMessage::create($validated);
 
-        $message = 'تم استلام رسالتك بنجاح. سيتواصل معك فريقنا قريبًا.';
+        $message = __('site.contact.success');
 
         if ($request->expectsJson()) {
             return response()->json([

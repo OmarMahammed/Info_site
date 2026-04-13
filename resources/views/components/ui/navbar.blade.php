@@ -1,3 +1,10 @@
+@php
+    $currentLocale = app()->getLocale();
+    $switchLocale = $currentLocale === 'ar' ? 'en' : 'ar';
+    $homeUrl = route('home', ['locale' => $currentLocale]);
+    $switchUrl = route('home', ['locale' => $switchLocale]);
+@endphp
+
 <header x-data="premiumNavbar()"
         x-init="init()"
         @keydown.escape.window="closeMobileMenu()"
@@ -8,7 +15,7 @@
             : 'border-transparent bg-transparent shadow-none'">
     <nav class="container-custom flex items-center gap-10 transition-all duration-300 ease-in-out"
          :class="isScrolled ? 'h-16' : 'h-20'">
-        <a href="{{ url('/') }}" class="inline-flex shrink-0 items-center" aria-label="{{ config('app.name', 'Laravel') }}">
+        <a href="{{ $homeUrl }}" class="inline-flex shrink-0 items-center" aria-label="{{ config('app.name', 'Laravel') }}">
             <div class="px-2 py-1 rounded-lg bg-white/90 dark:bg-white/10 transition-all duration-300 dark:shadow-[0_0_15px_rgba(255,115,0,0.25)]">
                 <img src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'Laravel') }}" class="h-10 w-auto object-contain">
             </div>
@@ -16,11 +23,11 @@
 
         <ul class="hidden flex-1 items-center justify-end gap-10 md:flex">
             <li>
-                <a href="{{ url('/') }}"
+                <a href="{{ $homeUrl }}"
                    @click="setActiveLink('home')"
                    class="nav-link inline-block text-sm font-medium text-gray-600 transition-all duration-300 hover:text-orange-500 dark:text-gray-400"
                    :class="activeLink === 'home' ? 'nav-link-active text-orange-500' : ''">
-                    {{ __('Home') }}
+                    {{ __('site.nav.home') }}
                 </a>
             </li>
             <li>
@@ -28,7 +35,7 @@
                    @click="setActiveLink('about')"
                    class="nav-link inline-block text-sm font-medium text-gray-600 transition-all duration-300 hover:text-orange-500 dark:text-gray-400"
                    :class="activeLink === 'about' ? 'nav-link-active text-orange-500' : ''">
-                    {{ __('About') }}
+                    {{ __('site.nav.about') }}
                 </a>
             </li>
             <li>
@@ -36,7 +43,7 @@
                    @click="setActiveLink('services')"
                    class="nav-link inline-block text-sm font-medium text-gray-600 transition-all duration-300 hover:text-orange-500 dark:text-gray-400"
                    :class="activeLink === 'services' ? 'nav-link-active text-orange-500' : ''">
-                    {{ __('Services') }}
+                    {{ __('site.nav.services') }}
                 </a>
             </li>
             <li>
@@ -44,16 +51,22 @@
                    @click="setActiveLink('contact')"
                    class="nav-link inline-block text-sm font-medium text-gray-600 transition-all duration-300 hover:text-orange-500 dark:text-gray-400"
                    :class="activeLink === 'contact' ? 'nav-link-active text-orange-500' : ''">
-                    {{ __('Contact') }}
+                    {{ __('site.nav.contact') }}
                 </a>
             </li>
         </ul>
 
         <div class="ms-auto flex items-center gap-2">
+            <a href="{{ $switchUrl }}"
+               onclick="this.href += window.location.hash || ''"
+               class="hidden rounded-full border border-gray-200 bg-white/90 px-3 py-2 text-xs font-semibold tracking-[0.12em] text-gray-700 transition-all duration-300 hover:scale-105 hover:border-orange-400 hover:text-orange-500 dark:border-gray-700 dark:bg-gray-800/90 dark:text-gray-200 md:inline-flex"
+               aria-label="{{ __('site.nav.switch_language') }}">
+                {{ __('site.nav.switch_to') }}
+            </a>
             <button onclick="toggleDark()"
                     type="button"
                     class="relative w-11 h-11 flex items-center justify-center rounded-full bg-white/90 dark:bg-gray-800/90 border border-gray-200 dark:border-gray-700 transition-all duration-500 ease-in-out hover:scale-110 hover:shadow-[0_0_12px_rgba(255,115,0,0.25)]"
-                    aria-label="Toggle dark mode">
+                    aria-label="{{ __('site.nav.toggle_dark') }}">
                 <svg class="absolute w-5 h-5 text-yellow-500 transition-all duration-500 opacity-100 scale-100 rotate-0 dark:opacity-0 dark:scale-0 dark:-rotate-90"
                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v2m0 14v2m9-9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l1.414 1.414M7.05 7.05 5.636 5.636"/>
@@ -67,7 +80,7 @@
             <button @click="toggleMobileMenu()"
                     type="button"
                     class="inline-flex items-center justify-center rounded-lg border border-gray-200 p-2 text-gray-600 transition-all duration-300 ease-in-out hover:scale-105 dark:border-gray-700 dark:text-gray-300 md:hidden"
-                    aria-label="Toggle navigation">
+                    aria-label="{{ __('site.nav.toggle_navigation') }}">
                 <svg x-show="!isMobileMenuOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
@@ -102,11 +115,11 @@
         <div class="rounded-xl border border-gray-100 bg-white shadow-xl dark:border-gray-800 dark:bg-gray-900">
             <ul class="divide-y divide-gray-100 dark:divide-gray-800">
                 <li>
-                    <a href="{{ url('/') }}"
+                    <a href="{{ $homeUrl }}"
                        @click="setActiveLink('home'); closeMobileMenu()"
                        class="block px-4 py-3 text-sm font-medium text-gray-600 transition-all duration-300 hover:bg-gray-50 hover:text-orange-500 dark:text-gray-300 dark:hover:bg-gray-800/80"
                        :class="activeLink === 'home' ? 'bg-gray-50 text-orange-500 dark:bg-gray-800/60' : ''">
-                        {{ __('Home') }}
+                        {{ __('site.nav.home') }}
                     </a>
                 </li>
                 <li>
@@ -114,7 +127,7 @@
                        @click="setActiveLink('about'); closeMobileMenu()"
                        class="block px-4 py-3 text-sm font-medium text-gray-600 transition-all duration-300 hover:bg-gray-50 hover:text-orange-500 dark:text-gray-300 dark:hover:bg-gray-800/80"
                        :class="activeLink === 'about' ? 'bg-gray-50 text-orange-500 dark:bg-gray-800/60' : ''">
-                        {{ __('About') }}
+                        {{ __('site.nav.about') }}
                     </a>
                 </li>
                 <li>
@@ -122,7 +135,7 @@
                        @click="setActiveLink('services'); closeMobileMenu()"
                        class="block px-4 py-3 text-sm font-medium text-gray-600 transition-all duration-300 hover:bg-gray-50 hover:text-orange-500 dark:text-gray-300 dark:hover:bg-gray-800/80"
                        :class="activeLink === 'services' ? 'bg-gray-50 text-orange-500 dark:bg-gray-800/60' : ''">
-                        {{ __('Services') }}
+                        {{ __('site.nav.services') }}
                     </a>
                 </li>
                 <li>
@@ -130,7 +143,14 @@
                        @click="setActiveLink('contact'); closeMobileMenu()"
                        class="block px-4 py-3 text-sm font-medium text-gray-600 transition-all duration-300 hover:bg-gray-50 hover:text-orange-500 dark:text-gray-300 dark:hover:bg-gray-800/80"
                        :class="activeLink === 'contact' ? 'bg-gray-50 text-orange-500 dark:bg-gray-800/60' : ''">
-                        {{ __('Contact') }}
+                        {{ __('site.nav.contact') }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ $switchUrl }}"
+                       onclick="this.href += window.location.hash || ''"
+                       class="block px-4 py-3 text-sm font-medium text-gray-600 transition-all duration-300 hover:bg-gray-50 hover:text-orange-500 dark:text-gray-300 dark:hover:bg-gray-800/80">
+                        {{ __('site.nav.switch_language') }}
                     </a>
                 </li>
             </ul>

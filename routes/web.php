@@ -1,8 +1,18 @@
 <?php
 
+use App\Http\Middleware\SetLocale;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/', function () {
+    return redirect()->route('home', ['locale' => session('locale', config('app.locale', 'ar'))]);
+});
+
+Route::prefix('{locale}')
+    ->where(['locale' => 'ar|en'])
+    ->middleware(SetLocale::class)
+    ->group(function () {
+        Route::get('/', [HomeController::class, 'index'])->name('home');
+        Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+    });
