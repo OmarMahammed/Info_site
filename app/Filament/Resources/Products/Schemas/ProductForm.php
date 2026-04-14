@@ -28,7 +28,7 @@ class ProductForm
                     ->rows(4)
                     ->columnSpanFull(),
                 FileUpload::make('image')
-                    ->label('Image')
+                    ->label(__('Image'))
                     ->disk('public')
                     ->directory('products')
                     ->visibility('public')
@@ -36,7 +36,7 @@ class ProductForm
                     ->imagePreviewHeight('150')
                     ->required(),
                 Toggle::make('is_active')
-                    ->label('Active')
+                    ->label(__('Active'))
                     ->default(true)
                     ->required(),
             ]);

@@ -23,13 +23,13 @@ class ProductsTable
                     ->searchable()
                     ->sortable(),
                 ImageColumn::make('image')
-                    ->label('Image')
+                    ->label(__('Image'))
                     ->disk('public')
                     ->visibility('public')
                     ->square()
                     ->size(60),
                 IconColumn::make('is_active')
-                    ->label('Active')
+                    ->label(__('Active'))
                     ->boolean()
                     ->sortable(),
                 TextColumn::make('created_at')
@@ -38,10 +38,10 @@ class ProductsTable
             ])
             ->filters([
                 TernaryFilter::make('is_active')
-                    ->label('Status')
-                    ->placeholder('All products')
-                    ->trueLabel('Active only')
-                    ->falseLabel('Inactive only'),
+                    ->label(__('Status'))
+                    ->placeholder(__('All products'))
+                    ->trueLabel(__('Active only'))
+                    ->falseLabel(__('Inactive only')),
             ])
             ->actions([
                 EditAction::make(),

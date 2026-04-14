@@ -4,6 +4,8 @@
 @import './trust.css';
 @import './products.css';
 @import './privacy.css';
+@import './contact.css';
+@import './footer.css';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
@@ -61,6 +63,19 @@
         letter-spacing: -0.01em;
         line-height: 1.7;
         text-rendering: optimizeLegibility;
+    }
+    html[dir='rtl'] body {
+        font-family: 'Noto Kufi Arabic', 'Tajawal', ui-sans-serif, system-ui, sans-serif;
+        letter-spacing: 0;
+    }
+    html[dir='rtl'] h1,
+    html[dir='rtl'] h2,
+    html[dir='rtl'] h3 {
+        font-weight: 600;
+        letter-spacing: 0;
+    }
+    html[dir='rtl'] h1 {
+        font-weight: 700;
     }
     p {
         line-height: 1.82;
@@ -157,7 +172,7 @@
     }
     .link-premium {
         color: var(--text-secondary);
-        transition: all 0.3s ease-in-out;
+        transition: color 0.26s ease, transform 0.26s ease;
     }
     .link-premium:hover {
         color: var(--color-primary);
@@ -165,7 +180,7 @@
     }
     .nav-link {
         position: relative;
-        transition: all 0.3s ease-in-out;
+        transition: opacity 0.26s ease;
     }
     .nav-link::after {
         content: '';

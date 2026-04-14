@@ -15,7 +15,7 @@
     <title>@yield('title', config('app.name', 'Laravel'))</title>
 
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700|noto-kufi-arabic:400,500,600,700|tajawal:400,500,700&display=swap" rel="stylesheet" />
 
     <!-- Google Analytics -->
     @if(config('services.analytics.ga_measurement_id'))

@@ -100,7 +100,7 @@
                         type="button"
                         x-on:click="goToSlide({{ $index }})"
                         x-bind:class="active === {{ $index }} ? 'w-8 bg-white' : 'w-3 bg-white/45'"
-                        class="h-3 rounded-full transition-all duration-300"
+                        class="h-3 rounded-full transition-[width,background-color] duration-300"
                         aria-label="الانتقال إلى الشريحة {{ $index + 1 }}"
                     ></button>
                 @endforeach
@@ -234,7 +234,7 @@
                                 type="button"
                                 x-on:click="goToSlide({{ $index }})"
                                 x-bind:class="active === {{ $index }} ? 'w-10 bg-white' : 'w-3 bg-white/35'"
-                                class="h-3 rounded-full transition-all duration-300"
+                                class="h-3 rounded-full transition-[width,background-color] duration-300"
                                 aria-label="{{ __('site.products.go_to', ['number' => $index + 1]) }}"
                             ></button>
                         @endforeach
@@ -265,7 +265,7 @@
         networkError: @js(__('site.contact.form.network_error')),
         successMessage: @js(__('site.contact.success')),
     })"
-    class="section-shell bg-[#0f1720] text-white"
+    class="contact-section section-shell"
 >
     <div class="container-custom">
         <div
@@ -282,14 +282,14 @@
             <span x-text="toastMessage"></span>
         </div>
 
-        <div data-animate class="hidden-anim transform-gpu cta-panel mx-auto max-w-5xl text-center" data-motion-group>
-            <span data-motion-item data-motion-order="0" class="inline-flex min-h-8 items-center rounded-full border border-white/15 bg-white/8 px-3 py-1 text-xs font-semibold tracking-[0.12em] text-orange-200">
+        <div data-animate class="hidden-anim transform-gpu contact-panel mx-auto max-w-5xl text-center" data-motion-group>
+            <span data-motion-item data-motion-order="0" class="section-kicker contact-kicker">
                 {{ __('site.contact.kicker') }}
             </span>
-            <h2 data-motion-item data-motion-order="1" class="mt-6 text-3xl font-black tracking-tight text-white md:text-5xl">
+            <h2 data-motion-item data-motion-order="1" class="mt-6 text-3xl font-bold tracking-tight md:text-5xl">
                 {{ __('site.contact.title') }}
             </h2>
-            <p data-motion-item data-motion-order="2" class="mx-auto mt-5 max-w-2xl text-base leading-8 text-gray-300 md:text-lg">
+            <p data-motion-item data-motion-order="2" class="mx-auto mt-5 max-w-2xl text-base leading-8 text-[var(--text-secondary)] md:text-lg">
                 {{ __('site.contact.description') }}
             </p>
 
@@ -297,17 +297,17 @@
                 <a href="https://wa.me/{{ $whatsappNumber }}?text={{ $whatsappGreeting }}" target="_blank" rel="noopener noreferrer" onclick="trackEvent('whatsapp_click', { location: 'contact_section' })" class="btn-base btn-primary min-h-[52px] min-w-[11rem] px-8">
                     {{ __('site.contact.whatsapp') }}
                 </a>
-                <a href="tel:+201014061724" class="btn-base border border-white/15 bg-white/8 text-white min-h-[52px] min-w-[11rem] px-8 shadow-[0_14px_30px_-22px_rgba(15,23,42,0.55)] transition duration-300 hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/12">
+                <a href="tel:+201014061724" class="btn-base btn-secondary min-h-[52px] min-w-[11rem] px-8">
                     {{ __('site.contact.call') }}
                 </a>
             </div>
 
-            <p data-motion-item data-motion-order="4" class="mt-6 text-sm text-gray-400">
+            <p data-motion-item data-motion-order="4" class="mt-6 text-sm text-[var(--text-muted)]">
                 {{ __('site.contact.helper') }}
             </p>
 
             @if (session('success'))
-                <div class="mx-auto mt-6 max-w-2xl rounded-2xl border border-emerald-400/25 bg-emerald-500/10 px-4 py-3 text-sm font-medium text-emerald-200">
+                <div class="mx-auto mt-6 max-w-2xl rounded-2xl border border-emerald-400/25 bg-emerald-500/10 px-4 py-3 text-sm font-medium text-emerald-700 dark:text-emerald-200">
                     {{ session('success') }}
                 </div>
             @endif
@@ -319,61 +319,61 @@
                     x-on:submit.prevent="submit"
                     action="{{ route('contact.store', ['locale' => $locale]) }}"
                     method="POST"
-                    class="space-y-5 rounded-[1.5rem] border border-white/10 bg-white/[0.05] p-6 text-center shadow-[0_18px_50px_-32px_rgba(0,0,0,0.55)] backdrop-saturate-150 sm:p-8"
+                    class="contact-form space-y-5 p-6 sm:p-8"
                 >
                     @csrf
 
-                    <div x-show="errorMessage" x-transition.opacity class="rounded-2xl border border-red-400/20 bg-red-500/10 px-4 py-3 text-sm font-medium text-red-200">
+                    <div x-show="errorMessage" x-transition.opacity class="rounded-xl border border-red-300/30 bg-red-50 px-4 py-3 text-sm font-medium text-red-700 dark:border-red-400/20 dark:bg-red-500/10 dark:text-red-200">
                         <span x-text="errorMessage"></span>
                     </div>
 
                     <div class="space-y-2 text-start">
-                        <label for="name" class="block text-sm font-medium text-gray-200">{{ __('site.contact.form.name') }}</label>
+                        <label for="name" class="contact-label">{{ __('site.contact.form.name') }}</label>
                         <input
                             id="name"
                             name="name"
                             type="text"
                             value="{{ old('name') }}"
-                            class="min-h-[52px] w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-white placeholder:text-gray-500 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 focus:outline-none"
+                            class="contact-input"
                             placeholder="{{ __('site.contact.form.name_placeholder') }}"
                             required
                         >
-                        <p x-show="errors.name" class="text-xs text-red-300" x-text="errors.name?.[0]"></p>
+                        <p x-show="errors.name" class="text-xs text-red-600 dark:text-red-300" x-text="errors.name?.[0]"></p>
                         @error('name')
-                            <p class="text-xs text-red-300">{{ $message }}</p>
+                            <p class="text-xs text-red-600 dark:text-red-300">{{ $message }}</p>
                         @enderror
                     </div>
 
                     <div class="space-y-2 text-start">
-                        <label for="phone" class="block text-sm font-medium text-gray-200">{{ __('site.contact.form.phone') }}</label>
+                        <label for="phone" class="contact-label">{{ __('site.contact.form.phone') }}</label>
                         <input
                             id="phone"
                             name="phone"
                             type="text"
                             value="{{ old('phone') }}"
-                            class="min-h-[52px] w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-white placeholder:text-gray-500 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 focus:outline-none"
+                            class="contact-input"
                             placeholder="{{ __('site.contact.form.phone_placeholder') }}"
                             required
                         >
-                        <p x-show="errors.phone" class="text-xs text-red-300" x-text="errors.phone?.[0]"></p>
+                        <p x-show="errors.phone" class="text-xs text-red-600 dark:text-red-300" x-text="errors.phone?.[0]"></p>
                         @error('phone')
-                            <p class="text-xs text-red-300">{{ $message }}</p>
+                            <p class="text-xs text-red-600 dark:text-red-300">{{ $message }}</p>
                         @enderror
                     </div>
 
                     <div class="space-y-2 text-start">
-                        <label for="message" class="block text-sm font-medium text-gray-200">{{ __('site.contact.form.message') }}</label>
+                        <label for="message" class="contact-label">{{ __('site.contact.form.message') }}</label>
                         <textarea
                             id="message"
                             name="message"
                             rows="5"
-                            class="w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-white placeholder:text-gray-500 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 focus:outline-none"
+                            class="contact-input"
                             placeholder="{{ __('site.contact.form.message_placeholder') }}"
                             required
                         >{{ old('message') }}</textarea>
-                        <p x-show="errors.message" class="text-xs text-red-300" x-text="errors.message?.[0]"></p>
+                        <p x-show="errors.message" class="text-xs text-red-600 dark:text-red-300" x-text="errors.message?.[0]"></p>
                         @error('message')
-                            <p class="text-xs text-red-300">{{ $message }}</p>
+                            <p class="text-xs text-red-600 dark:text-red-300">{{ $message }}</p>
                         @enderror
                     </div>
 

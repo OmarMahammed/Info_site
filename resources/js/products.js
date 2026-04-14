@@ -1,10 +1,12 @@
 /**
- * Product Showcase — Scroll-driven spotlight + rail interaction
+ * Product Showcase — Hover/focus-driven spotlight + rail interaction
  *
- * Active product is determined by:
- *  1. IntersectionObserver on rail items (highest visibility wins)
- *  2. Hover / focusin on desktop
- *  3. Click / tap on mobile
+ * Active product changes ONLY via:
+ *  1. Hover (mouseenter, debounced 60ms)
+ *  2. Focus (keyboard)
+ *  3. Click / tap
+ *
+ * Scrolling has no effect on active state.
  *
  * The spotlight panel animates through a three-phase content swap:
  *  leave → enter-start → enter
@@ -17,12 +19,7 @@ document.addEventListener('alpine:init', () => {
         displayed: 0,
         spotlightPhase: 'enter',
         swapTimer: null,
-
-        init() {
-            this.$nextTick(() => {
-                this.setupScrollObserver();
-            });
-        },
+        hoverTimer: null,
 
         activeProduct() {
             return this.items[this.active] ?? this.items[0];
@@ -46,6 +43,17 @@ document.addEventListener('alpine:init', () => {
             this.animateSpotlightSwap(index);
         },
 
+        handleHover(index) {
+            clearTimeout(this.hoverTimer);
+            this.hoverTimer = setTimeout(() => {
+                this.setActive(index);
+            }, 60);
+        },
+
+        handleHoverLeave() {
+            clearTimeout(this.hoverTimer);
+        },
+
         animateSpotlightSwap(index) {
             clearTimeout(this.swapTimer);
 
@@ -60,40 +68,7 @@ document.addEventListener('alpine:init', () => {
                         this.spotlightPhase = 'enter';
                     });
                 });
-            }, 220);
-        },
-
-        setupScrollObserver() {
-            const rail = this.$refs.rail;
-            if (!rail) return;
-
-            const items = rail.querySelectorAll('[data-pdp-index]');
-            if (!items.length) return;
-
-            const io = new IntersectionObserver(
-                (entries) => {
-                    let bestIndex = this.active;
-                    let bestRatio = 0;
-
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting && entry.intersectionRatio > bestRatio) {
-                            bestRatio = entry.intersectionRatio;
-                            bestIndex = parseInt(entry.target.dataset.pdpIndex, 10);
-                        }
-                    });
-
-                    if (bestRatio > 0.3 && bestIndex !== this.active) {
-                        this.setActive(bestIndex);
-                    }
-                },
-                {
-                    root: null,
-                    rootMargin: '-20% 0px -35% 0px',
-                    threshold: [0, 0.3, 0.5, 0.7, 1],
-                }
-            );
-
-            items.forEach((item) => io.observe(item));
+            }, 200);
         },
     }));
 });

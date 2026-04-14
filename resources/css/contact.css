@@ -1,0 +1,109 @@
+/* ─── Contact Section ───────────────────────────────────────
+   Dual-mode: clean light, deep navy dark.
+   Follows trust/services design language.                    */
+
+.contact-section {
+    position: relative;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.04), transparent 30%),
+        var(--bg);
+    color: var(--text-primary);
+}
+
+.dark .contact-section {
+    background:
+        radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.06), transparent 28%),
+        linear-gradient(180deg, #0c1119 0%, #0f1720 100%);
+}
+
+.contact-panel {
+    border: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--surface) 60%, transparent);
+    padding: clamp(2rem, 5vw, 3.5rem);
+    box-shadow: var(--shadow-panel);
+}
+
+.dark .contact-panel {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+    box-shadow: 0 28px 66px -40px rgba(0, 0, 0, 0.5);
+}
+
+.contact-kicker {
+    color: var(--color-primary);
+}
+
+.dark .contact-kicker {
+    color: #f6c9ab;
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Form card ─────────────────────────────────────────── */
+
+.contact-form {
+    border-radius: var(--radius-lg);
+    border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+    background: var(--surface);
+    box-shadow: var(--shadow-soft);
+}
+
+.dark .contact-form {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 18px 50px -32px rgba(0, 0, 0, 0.55);
+}
+
+/* ─── Labels ────────────────────────────────────────────── */
+
+.contact-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.dark .contact-label {
+    color: rgba(209, 213, 219, 0.88);
+}
+
+/* ─── Inputs ────────────────────────────────────────────── */
+
+.contact-input {
+    min-height: 3.25rem;
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+    background: var(--surface);
+    padding: 0.75rem 1rem;
+    font-size: 0.93rem;
+    color: var(--text-primary);
+    transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.contact-input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+.contact-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 22%, transparent);
+}
+
+.dark .contact-input {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(13, 23, 37, 0.8);
+    color: #f1f5f9;
+}
+
+.dark .contact-input::placeholder {
+    color: rgba(148, 163, 184, 0.55);
+}
+
+.dark .contact-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(200, 110, 54, 0.2);
+}

@@ -83,12 +83,10 @@ return [
         ],
     ],
     'footer' => [
-        'saudi_pride' => 'We are proud to serve our clients across Saudi Arabia',
-        'saudi_regions' => 'Serving all regions of the Kingdom',
+        'quick_links' => 'Quick Links',
+        'contact_us' => 'Contact Us',
+        'follow_us' => 'Follow Us',
         'saudi_badge' => 'Service within Saudi Arabia',
-        'brand_description' => 'We deliver advanced technology solutions that support digital transformation and business growth in the Saudi market.',
-        'location' => 'Riyadh, Saudi Arabia',
-        'rights' => 'All rights reserved.',
     ],
     'whatsapp' => [
         'greeting' => 'Hello, I would like to ask about your services',

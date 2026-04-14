@@ -1,0 +1,209 @@
+/* ─── Footer ────────────────────────────────────────────────
+   Dark: deep navy with subtle orange warmth.
+   Light: warm creamy tone with soft orange glow.            */
+
+.site-footer {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(4rem, 7vw, 5.5rem) clamp(2rem, 4vw, 3rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    background:
+        radial-gradient(circle at 15% 90%, rgba(249, 115, 22, 0.06), transparent 22%),
+        linear-gradient(180deg, #0a1018 0%, #0d1520 100%);
+    color: rgba(226, 232, 240, 0.82);
+}
+
+html:not(.dark) .site-footer {
+    border-top-color: rgba(200, 110, 54, 0.1);
+    background:
+        radial-gradient(ellipse at 10% 100%, rgba(249, 115, 22, 0.08), transparent 32%),
+        radial-gradient(ellipse at 90% 80%, rgba(200, 110, 54, 0.05), transparent 28%),
+        linear-gradient(180deg, #fdfaf7 0%, #f9f5f0 100%);
+    color: #5c4a3d;
+}
+
+
+/* ─── Grid ──────────────────────────────────────────────── */
+
+.site-footer__grid {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3rem);
+}
+
+@media (min-width: 768px) {
+    .site-footer__grid {
+        grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.8fr) minmax(0, 0.9fr);
+    }
+}
+
+
+/* ─── Brand column ──────────────────────────────────────── */
+
+.site-footer__brand-name {
+    margin-top: 1.25rem;
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+html:not(.dark) .site-footer__brand-name {
+    color: #1e1b18;
+}
+
+.site-footer__brand-desc {
+    margin-top: 0.75rem;
+    max-width: 24rem;
+    font-size: 0.88rem;
+    line-height: 1.82;
+}
+
+.site-footer__badge {
+    margin-top: 1.25rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 0.35rem 0.8rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: rgba(226, 232, 240, 0.62);
+}
+
+html:not(.dark) .site-footer__badge {
+    border-color: rgba(200, 110, 54, 0.15);
+    background: rgba(249, 115, 22, 0.06);
+    color: #9a7359;
+}
+
+
+/* ─── Column headings ───────────────────────────────────── */
+
+.site-footer__heading {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(248, 250, 252, 0.88);
+}
+
+html:not(.dark) .site-footer__heading {
+    color: #3d2e22;
+}
+
+
+/* ─── Links ─────────────────────────────────────────────── */
+
+.site-footer__links {
+    margin-top: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.site-footer__link {
+    font-size: 0.88rem;
+    color: rgba(203, 213, 225, 0.78);
+    transition: color 0.24s ease, transform 0.24s ease;
+}
+
+.site-footer__link:hover {
+    color: var(--color-primary);
+    transform: translateX(2px);
+}
+
+[dir='rtl'] .site-footer__link:hover {
+    transform: translateX(-2px);
+}
+
+html:not(.dark) .site-footer__link {
+    color: #7a6a5d;
+}
+
+html:not(.dark) .site-footer__link:hover {
+    color: var(--color-primary);
+}
+
+
+/* ─── Contact items ─────────────────────────────────────── */
+
+.site-footer__contact {
+    margin-top: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.site-footer__contact-item {
+    font-size: 0.88rem;
+    color: rgba(203, 213, 225, 0.72);
+}
+
+html:not(.dark) .site-footer__contact-item {
+    color: #7a6a5d;
+}
+
+
+/* ─── Socials ───────────────────────────────────────────── */
+
+.site-footer__socials {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.site-footer__social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(226, 232, 240, 0.74);
+    transition: transform 0.24s ease, border-color 0.24s ease, color 0.24s ease, background-color 0.24s ease;
+}
+
+.site-footer__social:hover {
+    transform: translateY(-3px);
+    border-color: rgba(249, 115, 22, 0.32);
+    color: var(--color-primary);
+    background: rgba(249, 115, 22, 0.08);
+}
+
+html:not(.dark) .site-footer__social {
+    border-color: rgba(200, 110, 54, 0.14);
+    background: rgba(255, 255, 255, 0.8);
+    color: #7a6a5d;
+}
+
+html:not(.dark) .site-footer__social:hover {
+    border-color: rgba(200, 110, 54, 0.3);
+    background: rgba(249, 115, 22, 0.08);
+    color: var(--color-primary);
+}
+
+.site-footer__social svg {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+
+/* ─── Bottom bar ────────────────────────────────────────── */
+
+.site-footer__bottom {
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: center;
+    font-size: 0.82rem;
+    color: rgba(148, 163, 184, 0.56);
+}
+
+html:not(.dark) .site-footer__bottom {
+    border-top-color: rgba(200, 110, 54, 0.1);
+    color: #a08e7f;
+}

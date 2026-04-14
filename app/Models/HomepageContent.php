@@ -22,10 +22,21 @@ class HomepageContent extends Model
         'headset',
     ];
 
+    protected const SOCIAL_PLATFORMS = [
+        'facebook',
+        'instagram',
+        'x',
+        'youtube',
+        'tiktok',
+        'snapchat',
+        'whatsapp',
+    ];
+
     protected $fillable = [
         'about',
         'services',
         'trust',
+        'footer',
     ];
 
     protected function casts(): array
@@ -34,6 +45,7 @@ class HomepageContent extends Model
             'about' => 'array',
             'services' => 'array',
             'trust' => 'array',
+            'footer' => 'array',
         ];
     }
 
@@ -109,6 +121,22 @@ class HomepageContent extends Model
                         'desc' => ['ar' => 'صيانة استباقية ودعم تشغيلي يساعدك على تقليل التوقف ورفع الجاهزية.', 'en' => 'Proactive maintenance and operational support that help reduce downtime and improve readiness.'],
                         'icon' => 'wrench',
                     ],
+                ],
+            ],
+            'footer' => [
+                'description' => ['ar' => 'نقدم حلول تقنية متقدمة تدعم التحول الرقمي ونمو الأعمال في السوق السعودي.', 'en' => 'We deliver advanced technology solutions that support digital transformation and business growth in the Saudi market.'],
+                'email' => 'info@alkayantech.sa',
+                'phone' => '+966 11 000 0000',
+                'location' => ['ar' => 'الرياض، المملكة العربية السعودية', 'en' => 'Riyadh, Saudi Arabia'],
+                'copyright' => ['ar' => 'Al Kayan Technology. جميع الحقوق محفوظة.', 'en' => 'Al Kayan Technology. All rights reserved.'],
+                'socials' => [
+                    ['platform' => 'whatsapp', 'url' => '', 'is_enabled' => true],
+                    ['platform' => 'instagram', 'url' => '', 'is_enabled' => false],
+                    ['platform' => 'x', 'url' => '', 'is_enabled' => false],
+                    ['platform' => 'facebook', 'url' => '', 'is_enabled' => false],
+                    ['platform' => 'youtube', 'url' => '', 'is_enabled' => false],
+                    ['platform' => 'tiktok', 'url' => '', 'is_enabled' => false],
+                    ['platform' => 'snapchat', 'url' => '', 'is_enabled' => false],
                 ],
             ],
             'trust' => [
@@ -274,12 +302,34 @@ class HomepageContent extends Model
         ];
     }
 
+    public function getFooter(?string $locale = null): array
+    {
+        $footer = $this->normalizeFooter($this->footer);
+
+        return [
+            'description' => $this->translateValue($footer['description'], $locale),
+            'email' => $footer['email'],
+            'phone' => $footer['phone'],
+            'location' => $this->translateValue($footer['location'], $locale),
+            'copyright' => $this->translateValue($footer['copyright'], $locale),
+            'socials' => collect($footer['socials'])
+                ->filter(fn (array $item) => ($item['is_enabled'] ?? false) && filled($item['url'] ?? null))
+                ->map(fn (array $item) => [
+                    'platform' => $item['platform'],
+                    'url' => $item['url'],
+                ])
+                ->values()
+                ->all(),
+        ];
+    }
+
     public function toFormData(): array
     {
         return [
             'about' => $this->normalizeAbout($this->about),
             'services' => $this->normalizeServices($this->services),
             'trust' => $this->normalizeTrust($this->trust),
+            'footer' => $this->normalizeFooter($this->footer),
         ];
     }
 
@@ -289,6 +339,7 @@ class HomepageContent extends Model
             'about' => $this->normalizeAbout($data['about'] ?? []),
             'services' => $this->normalizeServices($data['services'] ?? []),
             'trust' => $this->normalizeTrust($data['trust'] ?? []),
+            'footer' => $this->normalizeFooter($data['footer'] ?? []),
         ]);
 
         return $this;
@@ -368,6 +419,51 @@ class HomepageContent extends Model
             'safety' => $this->normalizeLabeledList($trust['safety'] ?? null, $defaults['safety'], 2, 4),
             'whatsapp_message' => $this->normalizeTranslatedText($trust['whatsapp_message'] ?? null, $defaults['whatsapp_message']),
         ];
+    }
+
+    protected function normalizeFooter(mixed $footer): array
+    {
+        $defaults = static::defaults()['footer'];
+        $footer = is_array($footer) ? $footer : [];
+
+        return [
+            'description' => $this->normalizeTranslatedText($footer['description'] ?? null, $defaults['description']),
+            'email' => $this->normalizeText($footer['email'] ?? null, $defaults['email']),
+            'phone' => $this->normalizeText($footer['phone'] ?? null, $defaults['phone']),
+            'location' => $this->normalizeTranslatedText($footer['location'] ?? null, $defaults['location']),
+            'copyright' => $this->normalizeTranslatedText($footer['copyright'] ?? null, $defaults['copyright']),
+            'socials' => $this->normalizeSocials($footer['socials'] ?? null, $defaults['socials']),
+        ];
+    }
+
+    protected function normalizeSocials(mixed $items, array $defaults): array
+    {
+        if (! is_array($items)) {
+            return $defaults;
+        }
+
+        $normalized = collect($items)
+            ->map(function ($item) {
+                if (! is_array($item)) {
+                    return null;
+                }
+
+                $platform = $item['platform'] ?? '';
+                if (! in_array($platform, static::SOCIAL_PLATFORMS, true)) {
+                    return null;
+                }
+
+                return [
+                    'platform' => $platform,
+                    'url' => is_string($item['url'] ?? null) ? trim($item['url']) : '',
+                    'is_enabled' => $this->normalizeBoolean($item['is_enabled'] ?? null, false),
+                ];
+            })
+            ->filter()
+            ->values()
+            ->all();
+
+        return count($normalized) > 0 ? $normalized : $defaults;
     }
 
     protected function normalizeServiceItems(mixed $items, array $defaults): array

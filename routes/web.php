@@ -9,6 +9,15 @@ Route::get('/', function () {
     return redirect()->route('home', ['locale' => session('locale', config('app.locale', 'ar'))]);
 });
 
+Route::get('/admin/set-locale/{locale}', function (string $locale) {
+    if (in_array($locale, ['en', 'ar'], true)) {
+        session(['admin_locale' => $locale]);
+        app()->setLocale($locale);
+    }
+
+    return redirect()->back();
+})->name('admin.set-locale');
+
 Route::prefix('{locale}')
     ->where(['locale' => 'ar|en'])
     ->middleware(SetLocale::class)

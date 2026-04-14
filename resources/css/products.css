@@ -200,12 +200,11 @@
     background: var(--surface);
     cursor: pointer;
     box-shadow: 0 4px 16px -14px rgba(15, 23, 42, 0.10);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
     transition:
         transform var(--pdp-dur) var(--pdp-ease),
-        opacity var(--pdp-dur) var(--pdp-ease),
-        border-color var(--pdp-dur) var(--pdp-ease),
-        box-shadow var(--pdp-dur) var(--pdp-ease),
-        background var(--pdp-dur) var(--pdp-ease);
+        opacity var(--pdp-dur) var(--pdp-ease);
 }
 
 .dark .pdp-item {
@@ -227,6 +226,7 @@
     background: linear-gradient(180deg, var(--color-primary), rgba(200, 110, 54, 0.3));
     opacity: 0;
     transform: scaleY(0.4);
+    will-change: transform, opacity;
     transition:
         opacity 320ms ease,
         transform 320ms var(--pdp-ease);
@@ -348,11 +348,9 @@
     border: 1px solid color-mix(in srgb, var(--border) 55%, transparent);
     background: color-mix(in srgb, var(--surface) 80%, transparent);
     color: var(--text-muted);
-    transition:
-        transform var(--pdp-dur) var(--pdp-ease),
-        background var(--pdp-dur) var(--pdp-ease),
-        color 280ms ease,
-        border-color 280ms ease;
+    will-change: transform;
+    backface-visibility: hidden;
+    transition: transform var(--pdp-dur) var(--pdp-ease);
 }
 
 .dark .pdp-item__arrow {

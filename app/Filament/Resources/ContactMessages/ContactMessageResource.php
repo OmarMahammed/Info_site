@@ -20,11 +20,11 @@ class ContactMessageResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $navigationLabel = 'Contact Messages';
+    protected static ?string $navigationLabel = null;
 
-    protected static ?string $modelLabel = 'Contact Message';
+    protected static ?string $modelLabel = null;
 
-    protected static ?string $pluralModelLabel = 'Contact Messages';
+    protected static ?string $pluralModelLabel = null;
 
     public static function form(Schema $schema): Schema
     {
@@ -54,5 +54,20 @@ class ContactMessageResource extends Resource
             'index' => ListContactMessages::route('/'),
             'view' => ViewContactMessage::route('/{record}'),
         ];
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Contact Messages');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('Contact Message');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('Contact Messages');
     }
 }

@@ -52,7 +52,6 @@
                     loading="eager"
                     decoding="async"
                     class="pdp-spotlight__img"
-                    x-bind:key="active"
                 >
             </div>
 
@@ -79,9 +78,10 @@
                     class="pdp-item"
                     data-pdp-index="{{ $index }}"
                     x-bind:data-active="active === {{ $index }} ? 'true' : 'false'"
-                    x-on:mouseenter="setActive({{ $index }})"
-                    x-on:focusin="setActive({{ $index }})"
-                    x-on:click="setActive({{ $index }})"
+                    x-on:mouseenter="handleHover({{ $index }})"
+                    x-on:mouseleave="handleHoverLeave()"
+                    x-on:focusin="setActive({{ $index }}, true)"
+                    x-on:click="setActive({{ $index }}, true)"
                     tabindex="0"
                     role="button"
                     aria-label="{{ $product->name }}"
