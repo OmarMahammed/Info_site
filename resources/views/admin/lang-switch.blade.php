@@ -1,18 +1,17 @@
 @php
-    $locale = session('admin_locale', 'en');
+    $locale = app()->getLocale() === 'ar' ? 'ar' : 'en';
 @endphp
 
-<div class="ms-2 inline-flex items-center gap-1 rounded-md border border-gray-200 bg-white px-1 py-1 text-xs dark:border-gray-700 dark:bg-gray-900">
-    <a
-        href="{{ route('admin.set-locale', ['locale' => 'en']) }}"
-        class="rounded px-2 py-1 {{ $locale === 'en' ? 'bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900' : 'text-gray-600 dark:text-gray-300' }}"
-    >
+<div class="admin-lang-switch" role="group" aria-label="Admin language switcher">
+    <a href="{{ route('admin.set-locale', 'en') }}"
+        class="admin-lang-switch__item {{ $locale === 'en' ? 'is-active' : '' }}"
+        aria-current="{{ $locale === 'en' ? 'true' : 'false' }}">
         EN
     </a>
-    <a
-        href="{{ route('admin.set-locale', ['locale' => 'ar']) }}"
-        class="rounded px-2 py-1 {{ $locale === 'ar' ? 'bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900' : 'text-gray-600 dark:text-gray-300' }}"
-    >
+
+    <a href="{{ route('admin.set-locale', 'ar') }}"
+        class="admin-lang-switch__item {{ $locale === 'ar' ? 'is-active' : '' }}"
+        aria-current="{{ $locale === 'ar' ? 'true' : 'false' }}">
         AR
     </a>
 </div>

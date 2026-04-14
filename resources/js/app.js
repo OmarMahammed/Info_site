@@ -189,17 +189,66 @@ Alpine.data('productCinemaSlider', (slidesCount = 0) => ({
     slidesCount,
     slideOffset: 58,
     resizeHandler: null,
+    touchStartX: 0,
+    touchStartY: 0,
+    touchDeltaX: 0,
+    isSwiping: false,
+    swipeThreshold: 50,
 
     init() {
         this.updateLayout();
         this.resizeHandler = () => this.updateLayout();
         window.addEventListener('resize', this.resizeHandler);
+
+        const el = this.$root;
+        el.addEventListener('touchstart', (e) => this.onTouchStart(e), { passive: true });
+        el.addEventListener('touchmove', (e) => this.onTouchMove(e), { passive: false });
+        el.addEventListener('touchend', (e) => this.onTouchEnd(e), { passive: true });
     },
 
     destroy() {
         if (this.resizeHandler) {
             window.removeEventListener('resize', this.resizeHandler);
         }
+    },
+
+    onTouchStart(e) {
+        const touch = e.touches[0];
+        this.touchStartX = touch.clientX;
+        this.touchStartY = touch.clientY;
+        this.touchDeltaX = 0;
+        this.isSwiping = false;
+    },
+
+    onTouchMove(e) {
+        const touch = e.touches[0];
+        const dx = touch.clientX - this.touchStartX;
+        const dy = touch.clientY - this.touchStartY;
+
+        if (!this.isSwiping && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
+            this.isSwiping = true;
+        }
+
+        if (this.isSwiping) {
+            e.preventDefault();
+            this.touchDeltaX = dx;
+        }
+    },
+
+    onTouchEnd() {
+        if (!this.isSwiping) return;
+
+        const isRtl = document.documentElement.dir === 'rtl';
+        const delta = isRtl ? -this.touchDeltaX : this.touchDeltaX;
+
+        if (delta < -this.swipeThreshold) {
+            this.next();
+        } else if (delta > this.swipeThreshold) {
+            this.prev();
+        }
+
+        this.touchDeltaX = 0;
+        this.isSwiping = false;
     },
 
     updateLayout() {
@@ -248,10 +297,11 @@ Alpine.data('productCinemaSlider', (slidesCount = 0) => ({
             return `transform: translate3d(${relative > 0 ? 125 : -125}%, 0, 0) scale(0.8); opacity: 0; filter: blur(8px); z-index: 0; pointer-events: none;`;
         }
 
+        const isMobile = window.innerWidth < 768;
         const translate = relative * this.slideOffset;
-        const scale = relative === 0 ? 1 : 0.85;
-        const opacity = relative === 0 ? 1 : 0.4;
-        const blur = relative === 0 ? 0 : 4;
+        const scale = relative === 0 ? 1 : (isMobile ? 0.92 : 0.85);
+        const opacity = relative === 0 ? 1 : (isMobile ? 0 : 0.4);
+        const blur = relative === 0 ? 0 : (isMobile ? 0 : 4);
         const zIndex = relative === 0 ? 30 : 20 - abs;
         const pointerEvents = relative === 0 ? 'auto' : 'none';
 
@@ -260,6 +310,14 @@ Alpine.data('productCinemaSlider', (slidesCount = 0) => ({
 
     getMediaStyle(index) {
         const relative = this.getRelativePosition(index);
+        const isMobile = window.innerWidth < 768;
+
+        if (isMobile) {
+            return relative === 0
+                ? 'transform: translate3d(0, 0, 0); opacity: 1;'
+                : 'transform: translate3d(0, 0, 0); opacity: 0;';
+        }
+
         const shift = relative === 0 ? 0 : relative < 0 ? -18 : 18;
         const opacity = relative === 0 ? 1 : 0.82;
         const scale = relative === 0 ? 1 : 0.96;

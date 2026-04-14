@@ -43,7 +43,9 @@
     transform: translate3d(calc(var(--section-pointer-x) * -0.7), calc(var(--section-scroll-y) * 0.4), 0);
 }
 
+
 /* Background image */
+
 .about-bg {
     position: absolute;
     inset: 0;
@@ -61,38 +63,32 @@
     transform: scale(1.08);
 }
 
+
 /* Dark gradient overlay */
+
 .about-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.55),
-        rgba(0, 0, 0, 0.82)
-    );
+    background: linear-gradient( to bottom, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.82));
     transform: translate3d(calc(var(--section-pointer-x) * 0.25), calc(var(--section-scroll-y) * 0.35), 0);
     transition: transform 0.3s linear;
 }
 
+
 /* Light mode: softer overlay */
+
 html:not(.dark) .about-overlay {
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.34),
-        rgba(255, 255, 255, 0.56)
-    );
+    background: linear-gradient( to bottom, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.56));
 }
 
 .dark .about-overlay {
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.55),
-        rgba(0, 0, 0, 0.82)
-    );
+    background: linear-gradient( to bottom, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.82));
 }
 
+
 /* Content container — starts hidden; .about-section.active reveals it */
+
 .about-content {
     position: relative;
     z-index: 2;
@@ -111,12 +107,16 @@ html:not(.dark) .about-overlay {
     transform: translate3d(calc(var(--section-pointer-x) * 0.3), calc(var(--section-scroll-y) * -0.2 + (var(--section-pointer-y) * 0.18)), 0);
 }
 
+
 /* Light mode text */
+
 html:not(.dark) .about-content {
     color: #111827;
 }
 
+
 /* Badge */
+
 .about-badge {
     display: inline-block;
     margin-bottom: 1rem;
@@ -136,9 +136,11 @@ html:not(.dark) .about-badge {
     color: #9a3412;
 }
 
+
 /* Title */
+
 .about-content h2 {
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
     font-weight: 800;
     line-height: 1.08;
     letter-spacing: -0.025em;
@@ -147,10 +149,12 @@ html:not(.dark) .about-badge {
 }
 
 html:not(.dark) .about-content h2 {
-    color: #111827;
+    color: #030303;
 }
 
+
 /* Subtitle */
+
 .about-sub {
     font-size: 1.125rem;
     color: #d1d5db;
@@ -159,10 +163,12 @@ html:not(.dark) .about-content h2 {
 }
 
 html:not(.dark) .about-sub {
-    color: #374151;
+    color: #000000;
 }
 
+
 /* Body paragraph */
+
 .about-desc {
     margin-top: 0;
     line-height: 1.85;
@@ -175,7 +181,9 @@ html:not(.dark) .about-desc {
     color: #4b5563;
 }
 
+
 /* Trust pills */
+
 .about-features {
     margin-top: 2rem;
     display: flex;
@@ -207,7 +215,9 @@ html:not(.dark) .about-features span {
     color: #1f2937;
 }
 
+
 /* CTA button */
+
 .about-btn {
     display: inline-flex;
     align-items: center;
@@ -231,17 +241,17 @@ html:not(.dark) .about-features span {
     box-shadow: 0 18px 34px -18px rgba(255, 122, 0, 0.42);
 }
 
+
 /* ─── Responsive ─────────────────────────────────────────── */
+
 @media (max-width: 768px) {
     .about-section {
         height: auto;
         padding-block: 5rem;
     }
-
     .about-content h2 {
         font-size: 2rem;
     }
-
     .about-sub {
         font-size: 1rem;
     }

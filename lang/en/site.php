@@ -37,6 +37,7 @@ return [
         'next' => 'Next',
         'go_to' => 'Go to product :number',
         'empty' => 'There are no active products right now. Add products from the database to display them here.',
+        'more' => 'For more, visit our website',
     ],
     'trust' => [
         'go_to_testimonial' => 'View testimonial :number',

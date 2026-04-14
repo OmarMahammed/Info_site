@@ -433,6 +433,43 @@
     .dark .info-card {
         background: color-mix(in srgb, var(--surface) 92%, transparent);
     }
+
+    .admin-lang-switch {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.2rem;
+        border-radius: 999px;
+        border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+        background: color-mix(in srgb, var(--surface) 80%, transparent);
+        padding: 0.2rem;
+    }
+    .admin-lang-switch__item {
+        display: inline-flex;
+        min-width: 2.1rem;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 0.32rem 0.62rem;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+    .admin-lang-switch__item:hover {
+        color: var(--text-primary);
+        background: color-mix(in srgb, var(--surface) 88%, transparent);
+        transform: translateY(-1px);
+    }
+    .admin-lang-switch__item.is-active,
+    .admin-lang-switch__item[aria-current='true'] {
+        color: #fff;
+        background: var(--color-primary);
+    }
+    html[dir='rtl'] .admin-lang-switch {
+        direction: rtl;
+    }
 }
 
 @keyframes hero-drift {
@@ -454,7 +491,7 @@
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     @layer components {
         .container-custom {
             padding-inline: 1rem;
@@ -478,6 +515,41 @@
         .hero-float-2 {
             width: 5rem;
             height: 5rem;
+        }
+
+        .product-slider {
+            overflow: hidden;
+            height: auto;
+            min-height: 28rem;
+            max-height: none;
+            border-radius: 1.25rem;
+            touch-action: pan-y;
+        }
+        .product-card {
+            width: 100%;
+            max-width: 100%;
+            padding: 0.5rem;
+        }
+        .product-card__media {
+            height: 36vh;
+            min-height: 14rem;
+        }
+        .product-card__text {
+            text-align: center;
+        }
+        .product-card__cta {
+            width: 100%;
+            max-width: 260px;
+            margin: 0 auto;
+            display: block;
+            text-align: center;
+        }
+        .product-slider__nav {
+            display: none;
+        }
+        .swiper-pagination,
+        .swiper-scrollbar {
+            display: none !important;
         }
     }
 }

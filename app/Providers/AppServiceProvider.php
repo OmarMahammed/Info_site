@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Models\HomepageContent;
 use Filament\Facades\Filament;
-use Filament\View\PanelsRenderHook;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -28,11 +27,17 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Filament::serving(function (): void {
-            App::setLocale(session('admin_locale', 'en'));
+            $locale = session('admin_locale', 'en');
+            App::setLocale($locale);
 
             Filament::registerRenderHook(
-                PanelsRenderHook::TOPBAR_END,
+                'panels::topbar.end',
                 fn (): string => view('admin.lang-switch')->render(),
+            );
+
+            Filament::registerRenderHook(
+                'panels::head.end',
+                fn (): string => '<script>document.documentElement.setAttribute("dir","' . ($locale === 'ar' ? 'rtl' : 'ltr') . '");document.documentElement.setAttribute("lang","' . e($locale) . '");</script>',
             );
         });
     }

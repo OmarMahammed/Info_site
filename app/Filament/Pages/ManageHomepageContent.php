@@ -759,6 +759,7 @@ class ManageHomepageContent extends Page
                                         ->schema([
                                             Repeater::make('footer.socials')
                                                 ->label(__('Social platforms'))
+                                                ->deletable(false)
                                                 ->schema([
                                                     Select::make('platform')
                                                         ->required()
@@ -782,7 +783,7 @@ class ManageHomepageContent extends Page
                                                         ->default(false)
                                                         ->inline(false),
                                                 ])
-                                                ->defaultItems(7)
+                                                ->defaultItems(10)
                                                 ->minItems(1)
                                                 ->maxItems(7)
                                                 ->collapsible()

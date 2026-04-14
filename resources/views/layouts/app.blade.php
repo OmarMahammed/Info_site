@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
-    dir="{{ app()->getLocale() === 'fa' || app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" class="scroll-smooth">
+    dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}" class="dark">
 
 <head>
     @php
@@ -15,7 +15,9 @@
     <title>@yield('title', config('app.name', 'Laravel'))</title>
 
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700|noto-kufi-arabic:400,500,600,700|tajawal:400,500,700&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.bunny.net/css?family=inter:400,500,600,700|noto-kufi-arabic:400,500,600,700|tajawal:400,500,700&display=swap"
+        rel="stylesheet" />
 
     <!-- Google Analytics -->
     @if(config('services.analytics.ga_measurement_id'))
@@ -50,7 +52,8 @@
 
     <a href="https://wa.me/{{ config('services.whatsapp.number') }}?text={{ rawurlencode(__('site.whatsapp.greeting')) }}"
         target="_blank" rel="noopener noreferrer"
-        onclick="trackEvent('whatsapp_click', { location: 'floating_button' })" aria-label="{{ __('site.whatsapp.floating_label') }}"
+        onclick="trackEvent('whatsapp_click', { location: 'floating_button' })"
+        aria-label="{{ __('site.whatsapp.floating_label') }}"
         class="fixed bottom-6 right-6 z-[70] inline-flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg shadow-green-900/25 transition duration-300 hover:scale-110 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-950">
         <span class="text-2xl leading-none" aria-hidden="true">💬</span>
     </a>

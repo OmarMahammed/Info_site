@@ -77,15 +77,15 @@
                             <span>{{ __('site.hero.badge') }}</span>
                         </span>
                     </div>
-                    <h1 class="text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+                    <h1 class="text-balance text-4xl font-black leading-[1.05] tracking-tight text-white sm:text-3xl md:text-4xl lg:text-5xl">
                         {{ __('site.hero.title') }}
                     </h1>
                     <p class="mx-auto mt-5 max-w-3xl text-pretty text-lg leading-[1.8] text-white/84 md:text-xl">
                         {{ __('site.hero.subtitle') }}
                     </p>
                     <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-                        <a href="#contact" class="btn-base btn-primary min-h-[52px] w-full sm:min-w-[11rem] sm:w-auto px-8">
-                            {{ __('site.hero.primary_cta') }}
+                        <a href="#" class="btn-base btn-primary min-h-[52px] w-full sm:min-w-[11rem] sm:w-auto px-8">
+                            {{ __('Visit our website') }}
                         </a>
                         <a href="https://wa.me/{{ $whatsappNumber }}?text={{ $whatsappGreeting }}" target="_blank" rel="noopener noreferrer" onclick="trackEvent('whatsapp_click', { location: 'hero' })" class="btn-base min-h-[52px] w-full sm:min-w-[11rem] sm:w-auto border border-white/18 bg-white/10 px-8 text-white shadow-[0_14px_30px_-22px_rgba(15,23,42,0.6)] transition duration-300 hover:-translate-y-0.5 hover:border-white/28 hover:bg-white/14">
                             {{ __('site.hero.secondary_cta') }}
@@ -135,26 +135,26 @@
         @if ($products->isNotEmpty())
             <div
                 x-data="productCinemaSlider({{ $products->count() }})"
-                class="relative mx-auto h-[80vh] min-h-[34rem] max-h-[52rem] w-full max-w-[1380px] overflow-hidden rounded-[1.75rem] border border-gray-200/70 bg-[#070b12] shadow-[0_35px_100px_-45px_rgba(15,23,42,0.7)] dark:border-gray-800/70"
+                class="product-slider relative mx-auto h-[80vh] min-h-[34rem] max-h-[52rem] w-full max-w-[1380px] overflow-hidden rounded-[1.75rem] border border-gray-200/70 bg-[#070b12] shadow-[0_35px_100px_-45px_rgba(15,23,42,0.7)] dark:border-gray-800/70"
             >
                 <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(249,115,22,0.2),_transparent_35%),radial-gradient(circle_at_bottom,_rgba(59,130,246,0.15),_transparent_30%)]"></div>
                 <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-black/30"></div>
 
                 @foreach ($products as $index => $product)
                     @php
-                        $productImage = $product->image ? asset('images/products/' . basename($product->image)) : asset('images/placeholder.png');
+                        $productImage = $product->image_url;
                         $productInquiryMessage = rawurlencode('السلام عليكم، حاب أستفسر عن منتج ' . $product->name);
                     @endphp
 
                     <article
                         x-bind:style="getSlideStyle({{ $index }})"
                         x-bind:aria-hidden="active === {{ $index }} ? 'false' : 'true'"
-                        class="absolute inset-0 p-3 transition-[transform,opacity,filter] duration-500 ease-in-out md:p-4"
+                        class="product-card absolute inset-0 p-3 transition-[transform,opacity,filter] duration-500 ease-in-out md:p-4"
                     >
                         <div class="grid h-full w-full grid-cols-1 overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-950/65 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-sm lg:grid-cols-[0.88fr_1.12fr]">
                             <div
                                 x-bind:style="getMediaStyle({{ $index }})"
-                                class="order-1 relative h-[42vh] min-h-[18rem] overflow-hidden transition-[transform,opacity] duration-500 ease-in-out lg:order-2 lg:h-full"
+                                class="product-card__media order-1 relative h-[42vh] min-h-[18rem] overflow-hidden transition-[transform,opacity] duration-500 ease-in-out lg:order-2 lg:h-full"
                             >
                                 <img
                                     src="{{ $productImage }}"
@@ -171,7 +171,7 @@
                             <div class="order-2 flex h-full items-center lg:order-1">
                                 <div
                                     x-bind:style="getTextStyle({{ $index }})"
-                                    class="w-full px-6 py-8 {{ $productTextAlign }} text-white transition-[transform,opacity] duration-500 ease-in-out sm:px-8 md:px-10 lg:px-12"
+                                    class="product-card__text w-full px-6 py-8 {{ $productTextAlign }} text-white transition-[transform,opacity] duration-500 ease-in-out sm:px-8 md:px-10 lg:px-12"
                                 >
                                     <span class="inline-flex min-h-8 items-center rounded-full border border-white/15 bg-white/6 px-3 py-1 text-xs font-semibold tracking-[0.12em] text-orange-200">
                                         {{ __('site.products.featured') }}
@@ -189,7 +189,7 @@
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             onclick="trackEvent('product_inquiry', { name: @js($product->name), location: 'cinema_slider' })"
-                                            class="btn-base btn-primary min-h-[52px] min-w-[11rem] justify-center px-8"
+                                            class="product-card__cta btn-base btn-primary min-h-[52px] min-w-[11rem] justify-center px-8"
                                         >
                                             {{ __('site.products.inquiry') }}
                                         </a>
@@ -204,7 +204,7 @@
                 @endforeach
 
                 @if ($products->count() > 1)
-                    <div class="absolute inset-x-0 top-1/2 z-40 flex -translate-y-1/2 items-center justify-between px-3 sm:px-5">
+                    <div class="product-slider__nav absolute inset-x-0 top-1/2 z-40 flex -translate-y-1/2 items-center justify-between px-3 sm:px-5">
                         <button
                             type="button"
                             x-on:click="prev()"
@@ -228,7 +228,7 @@
                         </button>
                     </div>
 
-                    <div class="absolute inset-x-0 bottom-5 z-40 flex items-center justify-center gap-2">
+                    <div class="product-slider__dots absolute inset-x-0 bottom-5 z-40 flex items-center justify-center gap-2">
                         @foreach ($products as $index => $product)
                             <button
                                 type="button"

@@ -5,18 +5,12 @@
     position: relative;
     overflow: hidden;
     padding-block: clamp(5rem, 9vw, 7.5rem);
-    background:
-        radial-gradient(circle at top left, rgba(249, 115, 22, 0.14), transparent 24%),
-        radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.10), transparent 26%),
-        linear-gradient(180deg, #08101b 0%, #0d1725 100%);
+    background: radial-gradient(circle at top left, rgba(249, 115, 22, 0.14), transparent 24%), radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.10), transparent 26%), linear-gradient(180deg, #08101b 0%, #0d1725 100%);
     color: #f8fafc;
 }
 
 html:not(.dark) .trust-section {
-    background:
-        radial-gradient(circle at top left, rgba(249, 115, 22, 0.10), transparent 22%),
-        radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.08), transparent 24%),
-        linear-gradient(180deg, #f7f8fb 0%, #edf1f6 100%);
+    background: radial-gradient(circle at top left, rgba(249, 115, 22, 0.10), transparent 22%), radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.08), transparent 24%), linear-gradient(180deg, #f7f8fb 0%, #edf1f6 100%);
     color: #0f172a;
 }
 
@@ -24,18 +18,14 @@ html:not(.dark) .trust-section {
     content: '';
     position: absolute;
     inset: 0;
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 24%),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.02));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 24%), linear-gradient(90deg, rgba(255, 255, 255, 0.02), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.02));
     pointer-events: none;
     transform: translate3d(calc(var(--section-pointer-x) * 0.45), calc(var(--section-scroll-y) * 0.4), 0);
     transition: transform 0.3s linear;
 }
 
 html:not(.dark) .trust-section::before {
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.72), transparent 24%),
-        linear-gradient(90deg, rgba(15, 23, 42, 0.03), transparent 18%, transparent 82%, rgba(15, 23, 42, 0.03));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), transparent 24%), linear-gradient(90deg, rgba(15, 23, 42, 0.03), transparent 18%, transparent 82%, rgba(15, 23, 42, 0.03));
 }
 
 .trust-shell {
@@ -72,10 +62,11 @@ html:not(.dark) .trust-kicker {
 }
 
 .trust-title {
+    font-size: clamp(2rem, 3.2vw, 2.8rem);
+    line-height: 1.15;
     margin-top: 1.15rem;
-    max-width: 34rem;
+    max-width: 39rem;
     color: #ffffff;
-    line-height: 1.08;
 }
 
 html:not(.dark) .trust-title {
@@ -113,11 +104,7 @@ html:not(.dark) .trust-copy {
     font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.04em;
-    transition:
-        transform 0.26s ease,
-        border-color 0.26s ease,
-        background 0.26s ease,
-        box-shadow 0.26s ease;
+    transition: transform 0.26s ease, border-color 0.26s ease, background 0.26s ease, box-shadow 0.26s ease;
 }
 
 .trust-ribbon-item:hover {
@@ -150,9 +137,7 @@ html:not(.dark) .trust-ribbon-item:hover {
     overflow: hidden;
     border-radius: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
-        rgba(8, 14, 24, 0.78);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)), rgba(8, 14, 24, 0.78);
     box-shadow: 0 28px 84px -58px rgba(0, 0, 0, 0.68);
 }
 
@@ -160,9 +145,7 @@ html:not(.dark) .trust-story,
 html:not(.dark) .trust-evidence,
 html:not(.dark) .trust-cta-dock {
     border-color: rgba(148, 163, 184, 0.2);
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.84)),
-        #ffffff;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.84)), #ffffff;
     box-shadow: 0 26px 82px -58px rgba(15, 23, 42, 0.2);
 }
 
@@ -343,11 +326,7 @@ html:not(.dark) .trust-evidence-title {
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.04);
     padding: 1rem 1.05rem;
-    transition:
-        transform 0.26s ease,
-        border-color 0.26s ease,
-        background 0.26s ease,
-        box-shadow 0.26s ease;
+    transition: transform 0.26s ease, border-color 0.26s ease, background 0.26s ease, box-shadow 0.26s ease;
 }
 
 .trust-stat:hover {
@@ -405,17 +384,11 @@ html:not(.dark) .trust-stat-note {
 .trust-cta-dock {
     margin-top: 1.25rem;
     padding: clamp(1.5rem, 3vw, 2rem);
-    background:
-        radial-gradient(circle at left center, rgba(249, 115, 22, 0.18), transparent 26%),
-        linear-gradient(135deg, rgba(208, 122, 63, 0.18), rgba(17, 24, 39, 0.22)),
-        rgba(11, 18, 31, 0.92);
+    background: radial-gradient(circle at left center, rgba(249, 115, 22, 0.18), transparent 26%), linear-gradient(135deg, rgba(208, 122, 63, 0.18), rgba(17, 24, 39, 0.22)), rgba(11, 18, 31, 0.92);
 }
 
 html:not(.dark) .trust-cta-dock {
-    background:
-        radial-gradient(circle at left center, rgba(249, 115, 22, 0.16), transparent 24%),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 243, 0.9)),
-        #ffffff;
+    background: radial-gradient(circle at left center, rgba(249, 115, 22, 0.16), transparent 24%), linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 243, 0.9)), #ffffff;
 }
 
 .trust-cta-layout {
@@ -489,17 +462,12 @@ html:not(.dark) .trust-cta-urgency {
     position: relative;
     gap: 0.7rem;
     box-shadow: 0 18px 34px -18px rgba(249, 115, 22, 0.5);
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        filter 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
 
 .trust-cta-primary:hover {
     transform: translate3d(0, -2px, 0) scale(1.02);
-    box-shadow:
-        0 24px 44px -22px rgba(249, 115, 22, 0.56),
-        0 0 0 6px rgba(249, 115, 22, 0.07);
+    box-shadow: 0 24px 44px -22px rgba(249, 115, 22, 0.56), 0 0 0 6px rgba(249, 115, 22, 0.07);
     filter: saturate(1.04);
 }
 
@@ -573,17 +541,11 @@ html:not(.dark) .trust-cta-secondary {
 }
 
 [dir='rtl'] .trust-cta-dock {
-    background:
-        radial-gradient(circle at right center, rgba(249, 115, 22, 0.18), transparent 26%),
-        linear-gradient(225deg, rgba(208, 122, 63, 0.18), rgba(17, 24, 39, 0.22)),
-        rgba(11, 18, 31, 0.92);
+    background: radial-gradient(circle at right center, rgba(249, 115, 22, 0.18), transparent 26%), linear-gradient(225deg, rgba(208, 122, 63, 0.18), rgba(17, 24, 39, 0.22)), rgba(11, 18, 31, 0.92);
 }
 
 html:not(.dark)[dir='rtl'] .trust-cta-dock {
-    background:
-        radial-gradient(circle at right center, rgba(249, 115, 22, 0.16), transparent 24%),
-        linear-gradient(225deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 243, 0.9)),
-        #ffffff;
+    background: radial-gradient(circle at right center, rgba(249, 115, 22, 0.16), transparent 24%), linear-gradient(225deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 243, 0.9)), #ffffff;
 }
 
 html:not(.dark) .trust-safety {
@@ -619,15 +581,12 @@ html:not(.dark) .trust-safety {
         grid-template-columns: minmax(0, 1.15fr) minmax(22rem, 0.85fr);
         align-items: start;
     }
-
     .trust-evidence {
         min-height: 100%;
     }
-
     .trust-cta-layout {
         grid-template-columns: minmax(0, 1.05fr) auto;
     }
-
     .trust-cta-actions {
         justify-content: flex-end;
     }
@@ -637,13 +596,11 @@ html:not(.dark) .trust-safety {
     .trust-section {
         padding-block: 4.5rem;
     }
-
     .trust-story,
     .trust-evidence,
     .trust-cta-dock {
         border-radius: 1.35rem;
     }
-
     .trust-quote-wrap {
         min-height: 17rem;
     }
