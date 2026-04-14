@@ -389,6 +389,10 @@ Alpine.data('contactForm', (config = {}) => ({
     errors: {},
     toastTimer: null,
 
+    isValidSaudiMobile(phoneDigits) {
+        return /^05[0-9]{8}$/.test(phoneDigits);
+    },
+
     async submit() {
         const form = this.$refs.form;
         const token = document.querySelector('meta[name="csrf-token"]') ?.getAttribute('content');
@@ -396,6 +400,19 @@ Alpine.data('contactForm', (config = {}) => ({
         this.loading = true;
         this.errorMessage = '';
         this.errors = {};
+
+        const phoneInput = form.querySelector('[name="phone"]');
+        const phoneDigits = (phoneInput?.value ?? '').replace(/\D/g, '');
+
+        if (! this.isValidSaudiMobile(phoneDigits)) {
+            this.loading = false;
+            this.errors = { phone: [config.phoneInvalid ?? ''] };
+            this.errorMessage = config.validationError ?? '';
+            return;
+        }
+
+        const formData = new FormData(form);
+        formData.set('phone', phoneDigits);
 
         try {
             const response = await fetch(form.action, {
@@ -405,7 +422,7 @@ Alpine.data('contactForm', (config = {}) => ({
                     'Accept': 'application/json',
                     'X-Requested-With': 'XMLHttpRequest',
                 },
-                body: new FormData(form),
+                body: formData,
             });
 
             const payload = await response.json().catch(() => ({}));

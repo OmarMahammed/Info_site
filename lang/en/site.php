@@ -81,6 +81,7 @@ return [
             'validation_error' => 'Please review the required fields and try again.',
             'generic_error' => 'Something went wrong. Please try again.',
             'network_error' => 'Connection error. Please try again shortly.',
+            'phone_invalid' => 'Enter a valid Saudi mobile number: 10 digits starting with 05 (example: 0512345678).',
         ],
     ],
     'footer' => [

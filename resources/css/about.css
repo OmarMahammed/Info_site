@@ -111,7 +111,7 @@ html:not(.dark) .about-overlay {
 /* Light mode text */
 
 html:not(.dark) .about-content {
-    color: #111827;
+    color: #000000;
 }
 
 
@@ -149,7 +149,7 @@ html:not(.dark) .about-badge {
 }
 
 html:not(.dark) .about-content h2 {
-    color: #030303;
+    color: #000000;
 }
 
 
@@ -178,7 +178,7 @@ html:not(.dark) .about-sub {
 }
 
 html:not(.dark) .about-desc {
-    color: #4b5563;
+    color: #000000;
 }
 
 
@@ -212,7 +212,7 @@ html:not(.dark) .about-desc {
 html:not(.dark) .about-features span {
     background: rgba(0, 0, 0, 0.05);
     border-color: rgba(0, 0, 0, 0.10);
-    color: #1f2937;
+    color: #000000;
 }
 
 

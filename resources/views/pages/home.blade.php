@@ -264,6 +264,7 @@
         genericError: @js(__('site.contact.form.generic_error')),
         networkError: @js(__('site.contact.form.network_error')),
         successMessage: @js(__('site.contact.success')),
+        phoneInvalid: @js(__('site.contact.form.phone_invalid')),
     })"
     class="contact-section section-shell"
 >
@@ -350,6 +351,11 @@
                             id="phone"
                             name="phone"
                             type="text"
+                            inputmode="numeric"
+                            autocomplete="tel"
+                            maxlength="10"
+                            pattern="05[0-9]{8}"
+                            title="{{ __('site.contact.form.phone_invalid') }}"
                             value="{{ old('phone') }}"
                             class="contact-input"
                             placeholder="{{ __('site.contact.form.phone_placeholder') }}"

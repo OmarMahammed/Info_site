@@ -40,7 +40,7 @@
         <div data-animate class="trust-header hidden-anim transform-gpu" data-motion-group>
             <span class="trust-kicker" data-motion-item data-motion-order="0">{{ $kicker }}</span>
 
-            <h2 class="trust-title text-3xl md:text-3xl lg:text-4xl" data-motion-item data-motion-order="1">
+            <h2 class="trust-title" data-motion-item data-motion-order="1">
                 {{ $title }}
             </h2>
 

@@ -9,11 +9,19 @@ class ContactController extends Controller
 {
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'string', 'max:255'],
-            'message' => ['required', 'string'],
-        ]);
+        $phone = preg_replace('/\D/', '', (string) $request->input('phone', ''));
+        $request->merge(['phone' => $phone]);
+
+        $validated = $request->validate(
+            [
+                'name' => ['required', 'string', 'max:255'],
+                'phone' => ['required', 'string', 'regex:/^05[0-9]{8}$/'],
+                'message' => ['required', 'string'],
+            ],
+            [
+                'phone.regex' => __('site.contact.form.phone_invalid'),
+            ]
+        );
 
         ContactMessage::create($validated);
 
