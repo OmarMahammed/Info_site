@@ -28,4 +28,28 @@ class HomeController extends Controller
             'trustContent' => $homepageContent->getTrust($locale),
         ]);
     }
+
+    public function about()
+    {
+        $homepageContent = HomepageContent::current();
+        return view('pages.about', [
+            'aboutContent' => $homepageContent->getAbout(app()->getLocale()),
+        ]);
+    }
+
+    public function services()
+    {
+        $homepageContent = HomepageContent::current();
+        return view('pages.services', [
+            'servicesContent' => $homepageContent->getServices(app()->getLocale()),
+        ]);
+    }
+
+    public function trust()
+    {
+        $homepageContent = HomepageContent::current();
+        return view('pages.trust', [
+            'trustContent' => $homepageContent->getTrust(app()->getLocale()),
+        ]);
+    }
 }

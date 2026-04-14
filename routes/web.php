@@ -16,3 +16,7 @@ Route::prefix('{locale}')
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
     });
+
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/services', [HomeController::class, 'services'])->name('services');
+Route::get('/trust', [HomeController::class, 'trust'])->name('trust');
