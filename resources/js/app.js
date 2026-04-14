@@ -1,5 +1,6 @@
 import './bootstrap';
 import Alpine from 'alpinejs';
+import './products';
 
 const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 const finePointerQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
@@ -78,7 +79,7 @@ Alpine.data('heroSlider', (slidesCount = 2) => ({
     },
 
     updateScrollProgress() {
-        const heroHeight = this.$root?.offsetHeight || window.innerHeight;
+        const heroHeight = this.$root ?.offsetHeight || window.innerHeight;
         this.scrollProgress = clamp(window.scrollY / Math.max(heroHeight * 0.95, 1), 0, 1);
     },
 
@@ -317,7 +318,7 @@ Alpine.data('premiumNavbar', () => ({
     },
 
     setInitialActiveLink() {
-        const hash = window.location.hash?.replace('#', '');
+        const hash = window.location.hash ?.replace('#', '');
         this.activeLink = hash || 'home';
     },
 }));
@@ -332,7 +333,7 @@ Alpine.data('contactForm', (config = {}) => ({
 
     async submit() {
         const form = this.$refs.form;
-        const token = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+        const token = document.querySelector('meta[name="csrf-token"]') ?.getAttribute('content');
 
         this.loading = true;
         this.errorMessage = '';
@@ -497,10 +498,9 @@ Alpine.data('trustConversion', (config = {}) => ({
 
                     this.hasAnimatedStats = true;
                     this.animateStats();
-                    this.counterObserver?.disconnect();
+                    this.counterObserver ?.disconnect();
                 });
-            },
-            { threshold: 0.3 }
+            }, { threshold: 0.3 }
         );
 
         this.counterObserver.observe(this.$root);
@@ -508,7 +508,7 @@ Alpine.data('trustConversion', (config = {}) => ({
 
     destroy() {
         window.clearInterval(this.testimonialTimer);
-        this.counterObserver?.disconnect();
+        this.counterObserver ?.disconnect();
     },
 
     startTestimonials() {
@@ -578,8 +578,7 @@ function initScrollAnimations() {
                     entry.target.classList.remove('show');
                 }
             });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -5% 0px' }
+        }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' }
     );
 
     document.querySelectorAll('[data-animate]').forEach((element) => {
@@ -614,8 +613,7 @@ function initStaggerAnimations() {
                             card.classList.remove('show');
                         }
                     });
-                },
-                { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+                }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
             );
 
             staggerObserver.observe(card);
@@ -646,8 +644,7 @@ function initMotionGroups() {
                         item.classList.toggle('motion-in', entry.isIntersecting);
                     });
                 });
-            },
-            { threshold: 0.18, rootMargin: '0px 0px -8% 0px' }
+            }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' }
         );
 
         observer.observe(group);
@@ -662,8 +659,7 @@ function initAboutReveal() {
                     entry.target.classList.add('active');
                 }
             });
-        },
-        { threshold: 0.15 }
+        }, { threshold: 0.15 }
     );
 
     document.querySelectorAll('.about-section').forEach((element) => {
@@ -719,8 +715,7 @@ function initSectionDepth() {
             });
 
             requestUpdate();
-        },
-        { threshold: [0, 0.2, 0.5, 1] }
+        }, { threshold: [0, 0.2, 0.5, 1] }
     );
 
     sections.forEach((section) => {

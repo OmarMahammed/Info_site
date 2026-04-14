@@ -52,4 +52,16 @@ class HomeController extends Controller
             'trustContent' => $homepageContent->getTrust(app()->getLocale()),
         ]);
     }
+
+    public function products()
+    {
+        $products = Product::latest()->get();
+
+        return view('pages.products', compact('products'));
+    }
+
+    public function privacy()
+    {
+        return view('pages.privacy');
+    }
 }

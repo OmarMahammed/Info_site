@@ -3,6 +3,7 @@
 return [
     'meta' => [
         'home_title' => 'Home',
+        'privacy_title' => 'Privacy Policy',
     ],
     'nav' => [
         'home' => 'Home',
@@ -15,6 +16,8 @@ return [
         'toggle_navigation' => 'Toggle navigation',
         'switch_to' => 'AR',
         'switch_language' => 'Switch to Arabic',
+        'trust_conversion' => 'Trust',
+        'privacy' => 'Privacy',
     ],
     'hero' => [
         'badge' => 'Serving Saudi Arabia',
@@ -38,6 +41,24 @@ return [
     'trust' => [
         'go_to_testimonial' => 'View testimonial :number',
         'testimonials_label' => 'Testimonials',
+    ],
+    'privacy' => [
+        'title' => 'Privacy Policy',
+        'subtitle' => 'We are committed to protecting your personal data and ensuring your privacy.',
+        'updated' => 'Last updated:',
+        'commitment' => 'We are committed to protecting your personal information with the highest standards of security and transparency.',
+
+        'intro_title' => 'Information Protection',
+        'intro_text' => 'We take your privacy seriously and use advanced security technologies to protect your data.',
+
+        'account_title' => 'User Account',
+        'account_text' => 'Creating an account requires personal data, and you are responsible for keeping your credentials secure.',
+
+        'communication_title' => 'Electronic Communication',
+        'communication_text' => 'By using our platform, you agree to receive communications related to our services.',
+
+        'reviews_title' => 'Customer Reviews',
+        'reviews_text' => 'We may use customer reviews for marketing and service improvement purposes.',
     ],
     'contact' => [
         'kicker' => 'Direct contact',

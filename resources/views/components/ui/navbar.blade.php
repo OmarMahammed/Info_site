@@ -2,7 +2,20 @@
     $currentLocale = app()->getLocale();
     $switchLocale = $currentLocale === 'ar' ? 'en' : 'ar';
     $homeUrl = route('home', ['locale' => $currentLocale]);
-    $switchUrl = route('home', ['locale' => $switchLocale]);
+    $segments = request()->segments();
+    $supportedLocales = ['ar', 'en'];
+
+    if (! empty($segments) && in_array($segments[0], $supportedLocales, true)) {
+        array_shift($segments);
+    }
+
+    $switchPathSegments = array_merge([$switchLocale], $segments);
+    $switchPath = implode('/', $switchPathSegments);
+    $switchUrl = url($switchPath === '' ? '/' : '/' . $switchPath);
+    $queryString = request()->getQueryString();
+    if ($queryString) {
+        $switchUrl .= '?' . $queryString;
+    }
 @endphp
 
 <header x-data="premiumNavbar()"

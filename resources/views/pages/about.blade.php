@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('site.meta.about_title') . ' — ' . config('app.name'))
+@section('title', __('site.nav.about') . ' — ' . config('app.name'))
 
 @section('content')
 

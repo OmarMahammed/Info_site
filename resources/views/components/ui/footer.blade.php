@@ -56,8 +56,14 @@
                     <li><a href="{{ route('trust', ['locale' => app()->getLocale()]) }}"
                             class="text-sm text-gray-400 transition-all duration-300 hover:text-[var(--color-primary)]">{{ __('site.nav.trust-conversion') }}</a>
                     </li>
-                    <li><a href="#products"
+                    <li><a href="{{ url(app()->getLocale() . '/products') }}"
                             class="text-sm text-gray-400 transition-all duration-300 hover:text-[var(--color-primary)]">{{ __('site.nav.products') }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('privacy', ['locale' => app()->getLocale()]) }}"
+                            class="text-sm text-gray-400 hover:text-[var(--color-primary)]">
+                            {{ __('site.nav.privacy') }}
+                        </a>
                     </li>
                     <li><a href="#contact"
                             class="text-sm text-gray-400 transition-all duration-300 hover:text-[var(--color-primary)]">{{ __('site.nav.contact') }}</a>

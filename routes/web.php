@@ -15,8 +15,10 @@ Route::prefix('{locale}')
     ->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+        Route::get('/about', [HomeController::class, 'about'])->name('about');
+        Route::get('/services', [HomeController::class, 'services'])->name('services');
+        Route::get('/trust', [HomeController::class, 'trust'])->name('trust');
+        Route::get('/products', [HomeController::class, 'products'])->name('products');
+        Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy');
     });
 
-Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/services', [HomeController::class, 'services'])->name('services');
-Route::get('/trust', [HomeController::class, 'trust'])->name('trust');

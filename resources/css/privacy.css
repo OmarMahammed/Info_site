@@ -1,0 +1,209 @@
+/* ─── Privacy Section ──────────────────────────────────────
+   Visual language mirrors trust-section: same backgrounds,
+   same panel treatment, same typography scale.              */
+
+.privacy-section {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(4rem, 7vw, 5.5rem);
+    background: radial-gradient(circle at top left, rgba(249, 115, 22, 0.10), transparent 22%), radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.08), transparent 24%), linear-gradient(180deg, #08101b 0%, #0d1725 100%);
+    color: #f8fafc;
+}
+
+html:not(.dark) .privacy-section {
+    background: radial-gradient(circle at top left, rgba(249, 115, 22, 0.08), transparent 20%), radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.06), transparent 22%), linear-gradient(180deg, #f7f8fb 0%, #edf1f6 100%);
+    color: #0f172a;
+}
+
+.privacy-header {
+    max-width: 42rem;
+}
+
+.privacy-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    min-height: 2rem;
+    padding: 0.4rem 0.95rem;
+    color: #fdba74;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    box-shadow: 0 16px 38px -28px rgba(15, 23, 42, 0.28);
+}
+
+html:not(.dark) .privacy-kicker {
+    border-color: rgba(15, 23, 42, 0.10);
+    background: rgba(255, 255, 255, 0.8);
+    color: #9a3412;
+}
+
+.privacy-title {
+    margin-top: 1.15rem;
+    max-width: 34rem;
+    color: #ffffff;
+    line-height: 1.15;
+    font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+}
+
+html:not(.dark) .privacy-title {
+    color: #0f172a;
+}
+
+.privacy-subtitle {
+    margin-top: 1rem;
+    max-width: 40rem;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    color: rgba(226, 232, 240, 0.82);
+}
+
+html:not(.dark) .privacy-subtitle {
+    color: #475569;
+}
+
+.privacy-date {
+    margin-top: 1.5rem;
+    font-size: 0.84rem;
+    color: rgba(203, 213, 225, 0.6);
+}
+
+.privacy-date span {
+    font-weight: 600;
+    color: rgba(203, 213, 225, 0.82);
+}
+
+html:not(.dark) .privacy-date {
+    color: #94a3b8;
+}
+
+html:not(.dark) .privacy-date span {
+    color: #475569;
+}
+
+
+/* ─── Content blocks ────────────────────────────────────── */
+
+.privacy-blocks {
+    margin-top: 2.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.privacy-block {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)), rgba(8, 14, 24, 0.78);
+    padding: clamp(1.25rem, 2.5vw, 1.6rem);
+    box-shadow: 0 28px 84px -58px rgba(0, 0, 0, 0.68);
+    transition: transform 0.26s ease, border-color 0.26s ease, box-shadow 0.26s ease;
+}
+
+.privacy-block:hover {
+    transform: translate3d(0, -2px, 0);
+    border-color: rgba(249, 115, 22, 0.18);
+    box-shadow: 0 32px 72px -48px rgba(249, 115, 22, 0.14);
+}
+
+html:not(.dark) .privacy-block {
+    border-color: rgba(148, 163, 184, 0.2);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.84)), #ffffff;
+    box-shadow: 0 26px 82px -58px rgba(15, 23, 42, 0.2);
+}
+
+html:not(.dark) .privacy-block:hover {
+    border-color: rgba(249, 115, 22, 0.16);
+    box-shadow: 0 28px 72px -48px rgba(249, 115, 22, 0.1);
+}
+
+.privacy-block-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.privacy-block-index {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: rgba(148, 163, 184, 0.78);
+    padding-top: 0.35rem;
+}
+
+html:not(.dark) .privacy-block-index {
+    color: #64748b;
+}
+
+.privacy-block-title {
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    font-weight: 700;
+    line-height: 1.28;
+    color: #ffffff;
+}
+
+html:not(.dark) .privacy-block-title {
+    color: #0f172a;
+}
+
+.privacy-block-text {
+    margin-top: 0.85rem;
+    max-width: 42rem;
+    line-height: 1.7;
+    font-size: 0.92rem;
+    color: rgba(203, 213, 225, 0.86);
+}
+
+html:not(.dark) .privacy-block-text {
+    color: #475569;
+}
+
+
+/* ─── Commitment footer ─────────────────────────────────── */
+
+.privacy-commitment {
+    margin-top: 2.5rem;
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.privacy-commitment p {
+    max-width: 36rem;
+    margin-inline: auto;
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: rgba(203, 213, 225, 0.64);
+}
+
+html:not(.dark) .privacy-commitment {
+    border-color: rgba(148, 163, 184, 0.12);
+    background: rgba(255, 255, 255, 0.56);
+}
+
+html:not(.dark) .privacy-commitment p {
+    color: #64748b;
+}
+
+
+/* ─── Responsive ────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+    .privacy-section {
+        padding-block: 4.5rem;
+    }
+    .privacy-block {
+        border-radius: 1.35rem;
+    }
+    .privacy-commitment {
+        border-radius: 1.35rem;
+    }
+}
