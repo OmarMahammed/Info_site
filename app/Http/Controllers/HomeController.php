@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HomepageContent;
+use App\Models\PrivacyPolicy;
 use App\Models\Product;
 
 class HomeController extends Controller
@@ -32,6 +33,7 @@ class HomeController extends Controller
     public function about()
     {
         $homepageContent = HomepageContent::current();
+
         return view('pages.about', [
             'aboutContent' => $homepageContent->getAbout(app()->getLocale()),
         ]);
@@ -40,6 +42,7 @@ class HomeController extends Controller
     public function services()
     {
         $homepageContent = HomepageContent::current();
+
         return view('pages.services', [
             'servicesContent' => $homepageContent->getServices(app()->getLocale()),
         ]);
@@ -48,6 +51,7 @@ class HomeController extends Controller
     public function trust()
     {
         $homepageContent = HomepageContent::current();
+
         return view('pages.trust', [
             'trustContent' => $homepageContent->getTrust(app()->getLocale()),
         ]);
@@ -65,6 +69,11 @@ class HomeController extends Controller
 
     public function privacy()
     {
-        return view('pages.privacy');
+        $policy = PrivacyPolicy::query()
+            ->where('is_active', true)
+            ->orderBy('id')
+            ->first();
+
+        return view('pages.privacy', compact('policy'));
     }
 }

@@ -189,5 +189,16 @@
     "Inactive only": "غير النشطة فقط",
     "Contact Messages": "رسائل التواصل",
     "Contact Message": "رسالة تواصل",
-    "Visit our website": "زيارة موقعنا"
+    "Visit our website": "زيارة موقعنا",
+    "Manage the legal page shown at /privacy. Arabic and English are stored separately.": "إدارة الصفحة القانونية المعروضة على /privacy. يُخزَّن المحتوى بالعربية والإنجليزية بشكل منفصل.",
+    "Title (Arabic)": "العنوان (عربي)",
+    "Content (Arabic)": "المحتوى (عربي)",
+    "Title (English)": "العنوان (إنجليزي)",
+    "Content (English)": "المحتوى (إنجليزي)",
+    "Visible on website": "ظاهر في الموقع",
+    "When disabled, visitors see the default static privacy page instead.": "عند الإيقاف، سيرى الزوار صفحة الخصوصية الثابتة الافتراضية بدلًا من هذا المحتوى.",
+    "Visible": "ظاهر",
+    "Last updated": "آخر تحديث",
+    "Privacy Policy": "سياسة الخصوصية",
+    "Languages": "اللغات"
 }
