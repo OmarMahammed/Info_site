@@ -298,7 +298,7 @@
                 <a href="https://wa.me/{{ $whatsappNumber }}?text={{ $whatsappGreeting }}" target="_blank" rel="noopener noreferrer" onclick="trackEvent('whatsapp_click', { location: 'contact_section' })" class="btn-base btn-primary min-h-[52px] min-w-[11rem] px-8">
                     {{ __('site.contact.whatsapp') }}
                 </a>
-                <a href="tel:+201014061724" class="btn-base btn-secondary min-h-[52px] min-w-[11rem] px-8">
+                <a href="tel:+{{ config('services.whatsapp.number') }}" class="btn-base btn-secondary min-h-[52px] min-w-[11rem] px-8">
                     {{ __('site.contact.call') }}
                 </a>
             </div>

@@ -10,6 +10,17 @@
     $location    = $footer['location'] ?? '';
     $copyright   = $footer['copyright'] ?? ('Al Kayan Technology. ' . __('site.footer.saudi_badge'));
     $socials     = $footer['socials'] ?? [];
+    $whatsappUrl = 'https://wa.me/' . config('services.whatsapp.number');
+
+    $socials = collect($socials)
+        ->map(function (array $social) use ($whatsappUrl): array {
+            if (($social['platform'] ?? null) === 'whatsapp') {
+                $social['url'] = $whatsappUrl;
+            }
+
+            return $social;
+        })
+        ->all();
 
     $navLinks = [
         ['label' => __('site.nav.about'),    'url' => route('about', ['locale' => $locale])],
