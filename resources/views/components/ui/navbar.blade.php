@@ -57,6 +57,19 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('features', ['locale' => app()->getLocale()]) }}"
+                    class="nav-link inline-block text-sm font-medium text-gray-600 transition-all duration-300 hover:text-orange-500 dark:text-gray-400">
+                    {{ __('site.footer.features') }}
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('partners', ['locale' => app()->getLocale()]) }}"
+                    class="nav-link inline-block text-sm font-medium text-gray-600 transition-all duration-300 hover:text-orange-500 dark:text-gray-400">
+                    {{ __('site.footer.partners') }}
+                </a>
+            </li>
+            <li>
                 <a href="#contact" @click="setActiveLink('contact')"
                     class="nav-link inline-block text-sm font-medium text-gray-600 transition-all duration-300 hover:text-orange-500 dark:text-gray-400"
                     :class="activeLink === 'contact' ? 'nav-link-active text-orange-500' : ''">
@@ -135,10 +148,16 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#contact" @click="setActiveLink('contact'); closeMobileMenu()"
-                        class="block px-4 py-3 text-sm font-medium text-gray-600 transition-all duration-300 hover:bg-gray-50 hover:text-orange-500 dark:text-gray-300 dark:hover:bg-gray-800/80"
-                        :class="activeLink === 'contact' ? 'bg-gray-50 text-orange-500 dark:bg-gray-800/60' : ''">
-                        {{ __('site.nav.contact') }}
+                    <a href="{{ route('features', ['locale' => app()->getLocale()]) }}" @click="closeMobileMenu()"
+                        class="block px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-orange-500 dark:text-gray-300 dark:hover:bg-gray-800/80">
+                        {{ __('site.footer.features') }}
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('partners', ['locale' => app()->getLocale()]) }}" @click="closeMobileMenu()"
+                        class="block px-4 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-orange-500 dark:text-gray-300 dark:hover:bg-gray-800/80">
+                        {{ __('site.footer.partners') }}
                     </a>
                 </li>
                 <li>

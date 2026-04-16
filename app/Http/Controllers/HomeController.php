@@ -76,4 +76,24 @@ class HomeController extends Controller
 
         return view('pages.privacy', compact('policy'));
     }
+
+    public function vision()
+    {
+        return view('pages.vision');
+    }
+
+    public function partners()
+    {
+        return view('pages.partners');
+    }
+
+    public function clients()
+    {
+        return view('pages.clients');
+    }
+
+    public function features()
+    {
+        return view('pages.features');
+    }
 }

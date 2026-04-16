@@ -89,6 +89,20 @@ return [
         'contact_us' => 'Contact Us',
         'follow_us' => 'Follow Us',
         'saudi_badge' => 'Service within Saudi Arabia',
+        'vision' => 'Our vision',
+        'commitment' => 'Partnership & delivery',
+        'partners' => 'Partners',
+        'clients' => 'Clients',
+        'features' => 'Features',
+    ],
+    'features_page' => [
+        'quality' => 'High quality and competitive pricing',
+        'team' => 'A qualified technical team',
+        'speed' => 'Fast execution and responsiveness',
+        'tailored' => 'Technical solutions tailored to each client\'s needs',
+    ],
+    'partners_page' => [
+        'intro' => 'Trusted vendors and brands we work with to deliver dependable technology solutions.',
     ],
     'whatsapp' => [
         'greeting' => 'Hello, I would like to ask about your services',

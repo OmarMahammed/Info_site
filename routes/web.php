@@ -29,5 +29,9 @@ Route::prefix('{locale}')
         Route::get('/trust', [HomeController::class, 'trust'])->name('trust');
         Route::get('/products', [HomeController::class, 'products'])->name('products');
         Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy');
+        Route::get('/vision', [HomeController::class, 'vision'])->name('vision');
+        Route::get('/partners', [HomeController::class, 'partners'])->name('partners');
+        Route::get('/clients', [HomeController::class, 'clients'])->name('clients');
+        Route::get('/features', [HomeController::class, 'features'])->name('features');
     });
 

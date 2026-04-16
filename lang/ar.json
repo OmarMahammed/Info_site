@@ -191,14 +191,16 @@
     "Contact Message": "رسالة تواصل",
     "Visit our website": "زيارة موقعنا",
     "Manage the legal page shown at /privacy. Arabic and English are stored separately.": "إدارة الصفحة القانونية المعروضة على /privacy. يُخزَّن المحتوى بالعربية والإنجليزية بشكل منفصل.",
-    "Title (Arabic)": "العنوان (عربي)",
     "Content (Arabic)": "المحتوى (عربي)",
-    "Title (English)": "العنوان (إنجليزي)",
     "Content (English)": "المحتوى (إنجليزي)",
     "Visible on website": "ظاهر في الموقع",
     "When disabled, visitors see the default static privacy page instead.": "عند الإيقاف، سيرى الزوار صفحة الخصوصية الثابتة الافتراضية بدلًا من هذا المحتوى.",
     "Visible": "ظاهر",
     "Last updated": "آخر تحديث",
     "Privacy Policy": "سياسة الخصوصية",
-    "Languages": "اللغات"
+    "Languages": "اللغات",
+    "Al Kayan Technology": "الكيان التكنولوجي",
+    "To be a trusted and leading technology choice, we contribute to enabling our clients to leverage technology to develop their businesses and achieve the best results.": "لتكون شريكًا تقنيًا موثوقًا ورائدًا، نساهم في تمكين عملائنا من الاستفادة من التكنولوجيا لتطوير أعمالهم وتحقيق أفضل النتائج.",
+    "Providing practical and effective technical solutions, backed by technical expertise and ongoing support, to achieve customer satisfaction and build long-term partnerships.": "تقديم حلول تقنية عملية وفعالة، مدعومة بخبرة فنية ودعم مستمر، بما يحقق رضا العملاء ويبني شراكات طويلة الأمد.",
+    "Our Vision": "رؤيتنا"
 }
