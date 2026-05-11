@@ -17,8 +17,6 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        App::setLocale(session('admin_locale', config('app.locale')));
-
         View::composer('components.ui.footer', function ($view) {
             $view->with(
                 'footerContent',
@@ -27,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Filament::serving(function (): void {
-            $locale = session('admin_locale', 'en');
+            $locale = session('admin_locale', config('app.locale', 'ar'));
             App::setLocale($locale);
 
             Filament::registerRenderHook(

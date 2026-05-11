@@ -51,7 +51,7 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        body:not(.dark) .client-card {
+        html:not(.dark) .client-card {
             background: #fff;
             border: 1px solid #e5e7eb;
         }
@@ -78,7 +78,7 @@
             color: #9ca3af;
         }
 
-        body:not(.dark) .client-name {
+        html:not(.dark) .client-name {
             color: #6b7280;
         }
     </style>

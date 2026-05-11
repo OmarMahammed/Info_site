@@ -11,10 +11,14 @@ class AdminLocale
 {
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = session('admin_locale', 'en');
+        $locale = session('admin_locale', config('app.locale', 'ar'));
 
         if (! in_array($locale, ['en', 'ar'], true)) {
-            $locale = 'en';
+            $locale = config('app.locale', 'ar');
+        }
+
+        if (! in_array($locale, ['en', 'ar'], true)) {
+            $locale = 'ar';
         }
 
         App::setLocale($locale);

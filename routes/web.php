@@ -6,7 +6,17 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect()->route('home', ['locale' => session('locale', config('app.locale', 'ar'))]);
+    $locale = session('locale');
+
+    if (! in_array($locale, ['ar', 'en'], true)) {
+        $locale = config('app.locale', 'ar');
+    }
+
+    if (! in_array($locale, ['ar', 'en'], true)) {
+        $locale = 'ar';
+    }
+
+    return redirect()->route('home', ['locale' => $locale]);
 });
 
 Route::get('/admin/set-locale/{locale}', function (string $locale) {

@@ -267,7 +267,7 @@ Alpine.data('productCinemaSlider', (slidesCount = 0) => ({
             return;
         }
 
-        this.slideOffset = 100;
+        this.slideOffset = 92;
     },
 
     getRelativePosition(index) {
@@ -564,26 +564,82 @@ Alpine.data('trustConversion', (config = {}) => ({
             this.startTestimonials();
         }
 
-        this.counterObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting || this.hasAnimatedStats) {
-                        return;
-                    }
+        if (prefersReducedMotion()) {
+            this.stats.forEach((stat) => {
+                stat.current = Number(stat.value) || 0;
+            });
+            this.hasAnimatedStats = true;
+            return;
+        }
 
-                    this.hasAnimatedStats = true;
-                    this.animateStats();
-                    this.counterObserver ?.disconnect();
-                });
-            }, { threshold: 0.3 }
-        );
+        const startAnimation = () => {
+            if (this.hasAnimatedStats) return;
+            this.hasAnimatedStats = true;
+            this.animateStats();
+            this.counterObserver ?.disconnect();
+            this.counterObserver = null;
 
-        this.counterObserver.observe(this.$root);
+            if (this.scrollFallback) {
+                window.removeEventListener('scroll', this.scrollFallback);
+                window.removeEventListener('resize', this.scrollFallback);
+                this.scrollFallback = null;
+            }
+        };
+
+        const checkInViewport = () => {
+            const target = this.$refs.statList ?? this.$root;
+            if (!target) return false;
+
+            const rect = target.getBoundingClientRect();
+            const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+
+            return rect.top < viewportHeight && rect.bottom > 0;
+        };
+
+        this.scrollFallback = () => {
+            if (this.hasAnimatedStats) return;
+            if (checkInViewport()) startAnimation();
+        };
+
+        this.$nextTick(() => {
+            const target = this.$refs.statList ?? this.$root;
+            if (!target) return;
+
+            if (checkInViewport()) {
+                startAnimation();
+                return;
+            }
+
+            try {
+                this.counterObserver = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting && entry.intersectionRatio > 0) {
+                                startAnimation();
+                            }
+                        });
+                    },
+                    { root: null, threshold: 0, rootMargin: '0px 0px -5% 0px' }
+                );
+                this.counterObserver.observe(target);
+            } catch (e) {
+                // IntersectionObserver unavailable; scroll fallback handles it.
+            }
+
+            window.addEventListener('scroll', this.scrollFallback, { passive: true });
+            window.addEventListener('resize', this.scrollFallback);
+        });
     },
 
     destroy() {
         window.clearInterval(this.testimonialTimer);
         this.counterObserver ?.disconnect();
+
+        if (this.scrollFallback) {
+            window.removeEventListener('scroll', this.scrollFallback);
+            window.removeEventListener('resize', this.scrollFallback);
+            this.scrollFallback = null;
+        }
     },
 
     startTestimonials() {

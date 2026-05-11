@@ -10,6 +10,18 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        (function () {
+            var STORAGE_KEY = 'introductory_site_theme';
+            try {
+                var raw = sessionStorage.getItem(STORAGE_KEY);
+                var isLight = (raw || '').trim().toLowerCase() === 'light';
+                document.documentElement.classList.toggle('dark', !isLight);
+            } catch (e) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', config('app.name', 'Laravel'))</title>
@@ -64,16 +76,12 @@
 
     <script>
         function toggleDark() {
-            const isDark = document.documentElement.classList.toggle('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            const nextDark = !document.documentElement.classList.contains('dark');
+            document.documentElement.classList.toggle('dark', nextDark);
+            try {
+                sessionStorage.setItem('introductory_site_theme', nextDark ? 'dark' : 'light');
+            } catch (e) {}
         }
-
-        (function () {
-            const saved = localStorage.getItem('theme');
-            if (saved === 'dark') {
-                document.documentElement.classList.add('dark');
-            }
-        })();
     </script>
 </body>
 

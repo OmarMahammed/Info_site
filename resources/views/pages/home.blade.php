@@ -118,7 +118,7 @@
             </div>
             @if ($products->isNotEmpty())
                 <div x-data="productCinemaSlider({{ $products->count() }})"
-                    class="product-slider relative mx-auto h-[80vh] min-h-[34rem] max-h-[52rem] w-full max-w-[1380px] overflow-hidden rounded-[1.75rem] border border-gray-200/70 bg-[#070b12] shadow-[0_35px_100px_-45px_rgba(15,23,42,0.7)] dark:border-gray-800/70">
+                    class="product-slider relative mx-auto h-[80vh] min-h-[34rem] max-h-[52rem] w-full max-w-[1380px] overflow-hidden rounded-[1.75rem] border border-gray-200/70 bg-[#070b12] shadow-[0_35px_100px_-45px_rgba(15,23,42,0.7)] dark:border-gray-800/70 max-md:h-auto max-md:max-h-none max-md:min-h-[36rem] max-md:rounded-[1.25rem]">
                     <div
                         class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(249,115,22,0.2),_transparent_35%),radial-gradient(circle_at_bottom,_rgba(59,130,246,0.15),_transparent_30%)]">
                     </div>
@@ -138,7 +138,7 @@
                             <div
                                 class="grid h-full w-full grid-cols-1 overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-950/65 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-sm lg:grid-cols-[0.88fr_1.12fr]">
                                 <div x-bind:style="getMediaStyle({{ $index }})"
-                                    class="product-card__media order-1 relative h-[42vh] min-h-[18rem] overflow-hidden transition-[transform,opacity] duration-500 ease-in-out lg:order-2 lg:h-full">
+                                    class="product-card__media order-1 relative h-[42vh] min-h-[18rem] overflow-hidden transition-[transform,opacity] duration-500 ease-in-out max-md:h-[12rem] max-md:min-h-[12rem] max-md:max-h-[12rem] lg:order-2 lg:h-full">
                                     <img src="{{ $productImage }}" alt="{{ $product->name }}" width="960"
                                         height="1080" loading="lazy" decoding="async"
                                         class="h-full w-full object-cover object-center">
@@ -181,8 +181,8 @@
                     @endforeach
 
                     @if ($products->count() > 1)
-                        <div
-                            class="product-slider__nav absolute inset-x-0 top-1/2 z-40 flex -translate-y-1/2 items-center justify-between px-3 sm:px-5">
+                        <div dir="ltr"
+                            class="product-slider__nav absolute inset-x-0 top-1/2 z-40 flex -translate-y-1/2 items-center justify-between px-3 sm:px-5 max-md:top-[calc(0.5rem+6rem)] max-md:-translate-y-1/2 max-md:px-2">
                             <button type="button" x-on:click="prev()"
                                 class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/35 text-white backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:bg-white hover:text-black"
                                 aria-label="{{ __('site.products.previous') }}">
@@ -205,7 +205,7 @@
                         </div>
 
                         <div
-                            class="product-slider__dots absolute inset-x-0 bottom-5 z-40 flex items-center justify-center gap-2">
+                            class="product-slider__dots absolute inset-x-0 bottom-5 z-40 flex items-center justify-center gap-2 max-md:bottom-3 max-md:px-2">
                             @foreach ($products as $index => $product)
                                 <button type="button" x-on:click="goToSlide({{ $index }})"
                                     x-bind:class="active === {{ $index }} ? 'w-10 bg-white' : 'w-3 bg-white/35'"

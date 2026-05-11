@@ -15,7 +15,15 @@ class SetLocale
         $locale = $request->route('locale');
 
         if (! in_array($locale, self::SUPPORTED_LOCALES, true)) {
+            $locale = session('locale');
+        }
+
+        if (! in_array($locale, self::SUPPORTED_LOCALES, true)) {
             $locale = config('app.locale', 'ar');
+        }
+
+        if (! in_array($locale, self::SUPPORTED_LOCALES, true)) {
+            $locale = 'ar';
         }
 
         app()->setLocale($locale);

@@ -113,7 +113,7 @@
             <aside data-animate class="trust-evidence hidden-anim transform-gpu" data-motion-group>
                 <p class="trust-evidence-title" data-motion-item data-motion-order="0">{{ $evidenceTitle }}</p>
 
-                <div class="trust-stat-list" data-motion-item data-motion-order="1">
+                <div class="trust-stat-list" x-ref="statList" data-motion-item data-motion-order="1">
                     @foreach ($stats as $index => $stat)
                         <div class="trust-stat">
                             <div class="trust-stat-value">

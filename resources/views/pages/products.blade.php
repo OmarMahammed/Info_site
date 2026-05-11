@@ -95,10 +95,8 @@
     </div>
 
     <div class="container-custom mt-8 mb-10 flex justify-center md:mt-12 md:mb-14">
-        <a
-            href="#"
-            class="inline-flex max-w-fit items-center justify-center rounded-xl bg-[var(--color-primary)] px-6 py-3 text-sm font-medium text-white shadow-[0_10px_28px_-14px_rgba(200,110,54,0.55)] transition-all duration-200 ease-out hover:-translate-y-px hover:scale-[1.02] hover:opacity-95 hover:shadow-[0_14px_36px_-16px_rgba(200,110,54,0.5)] active:scale-[0.98] active:translate-y-0 dark:text-white dark:shadow-[0_10px_28px_-12px_rgba(0,0,0,0.45)] dark:hover:brightness-105 dark:hover:opacity-100 md:text-base"
-        >
+        <a href="#"
+            class="inline-flex max-w-fit items-center justify-center rounded-xl bg-[var(--color-primary)] px-6 py-3 text-sm font-medium text-white shadow-[0_10px_28px_-14px_rgba(200,110,54,0.55)] transition-all duration-200 ease-out hover:-translate-y-px hover:scale-[1.02] hover:opacity-95 hover:shadow-[0_14px_36px_-16px_rgba(200,110,54,0.5)] active:scale-[0.98] active:translate-y-0 dark:text-white dark:shadow-[0_10px_28px_-12px_rgba(0,0,0,0.45)] dark:hover:brightness-105 dark:hover:opacity-100 md:text-base">
             {{ __('site.products.more') }}
         </a>
     </div>
